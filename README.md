@@ -1,10 +1,55 @@
-README
+# Overview
 
-Step A. in powershell: venv\Scripts\activate
+Python packages for alignment of sequences
+
+# Development Environment
+
+## Requirements
+
+Python3
+
+## Configuration
+
+1. Create a virtual environment.
+
+    python(3) -m venv venv
+
+2. Activate the virtual environment.
+
+e.g. in powershell: 
+
+    .\venv\Scripts\activate.ps1
+
+e.g in zsh/bash/sh
+
+    .\venv\Scripts\activate
+
+
+https://docs.python.org/3/library/venv.html 
+
+3. Install dependencies
+
+    pip(3) install -r requirements.txt
+
+
+# Contributing
+
+## Tests
+
+Tests are written using [PyTest](https://docs.pytest.org/en/stable/index.html)
+
+### Run Tests
+
+In the root foler
+
+    pytest -v
+
+
+# Usage
 
 Step by Step:
 
-0. into terminal: pip install -r path/to/requirements.txt
+0. into terminal: pip(3) install -r path/to/requirements.txt
 
 1. generates fasta files of sequences corresponding to a gene, species, or orientation
 
