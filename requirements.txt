@@ -1,0 +1,4 @@
+biopython
+Bio
+pandas
+matplotlib

@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.17.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>core_nt</BlastOutput_db>
+  <BlastOutput_query-ID>Query_7828213</BlastOutput_query-ID>
+  <BlastOutput_query-def>No definition line</BlastOutput_query-def>
+  <BlastOutput_query-len>50</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_sc-match>2</Parameters_sc-match>
+      <Parameters_sc-mismatch>-3</Parameters_sc-mismatch>
+      <Parameters_gap-open>5</Parameters_gap-open>
+      <Parameters_gap-extend>2</Parameters_gap-extend>
+      <Parameters_filter>L;m;</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_7828213</Iteration_query-ID>
+  <Iteration_query-def>No definition line</Iteration_query-def>
+  <Iteration_query-len>50</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gi|2239708513|gb|MZ925009.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61994 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925009</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gi|2239708551|gb|MZ925028.1|</Hit_id>
+  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39032 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925028</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gi|2239708433|gb|MZ924969.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39049 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924969</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gi|2441427489|gb|OL451420.1|</Hit_id>
+  <Hit_def>Crocidura zaitsevi voucher CVN231 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>OL451420</Hit_accession>
+  <Hit_len>405</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>131</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gi|2441427497|gb|OL451424.1|</Hit_id>
+  <Hit_def>Crocidura zaitsevi voucher AVA14-43 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>OL451424</Hit_accession>
+  <Hit_len>405</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>131</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gi|2239708585|gb|MZ925045.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:218775 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925045</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gi|2239708531|gb|MZ925018.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61724 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925018</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gi|2451844335|gb|OQ375209.1|</Hit_id>
+  <Hit_def>Crocidura aff. suaveolens ZMMU S-182392 isolate Buryatia_45 brain derived neurotrophic factor (BDNF) gene, exon 2 and partial cds</Hit_def>
+  <Hit_accession>OQ375209</Hit_accession>
+  <Hit_len>391</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>129</Hsp_hit-from>
+      <Hsp_hit-to>178</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gi|2239708351|gb|MZ924928.1|</Hit_id>
+  <Hit_def>Crocidura parva voucher NMV&lt;AUS&gt;:MAMM Z57055 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924928</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gi|2239708605|gb|MZ925055.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213009 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925055</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gi|2239708441|gb|MZ924973.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39030 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924973</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gi|2239708379|gb|MZ924942.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39305 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924942</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gi|2239708389|gb|MZ924947.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39317 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924947</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gi|2239708477|gb|MZ924991.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210544 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924991</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gi|2239708505|gb|MZ925005.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:213341 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925005</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>16</Hit_num>
+  <Hit_id>gi|2239708475|gb|MZ924990.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210597 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924990</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>17</Hit_num>
+  <Hit_id>gi|2239708625|gb|MZ925065.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213019 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925065</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>18</Hit_num>
+  <Hit_id>gi|2239708481|gb|MZ924993.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210549 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924993</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>19</Hit_num>
+  <Hit_id>gi|2239708563|gb|MZ925034.1|</Hit_id>
+  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39037 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925034</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>20</Hit_num>
+  <Hit_id>gi|2239708689|gb|MZ925097.1|</Hit_id>
+  <Hit_def>Crocidura tenebrosa voucher LSUMZ:Mammalogy:39268 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925097</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>21</Hit_num>
+  <Hit_id>gi|2239708521|gb|MZ925013.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61685 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925013</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>22</Hit_num>
+  <Hit_id>gi|2239708503|gb|MZ925004.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61566 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925004</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>23</Hit_num>
+  <Hit_id>gi|2304586305|gb|OL587027.1|</Hit_id>
+  <Hit_def>Sorex bedfordiae isolate EEX0391 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>OL587027</Hit_accession>
+  <Hit_len>482</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>149</Hsp_hit-from>
+      <Hsp_hit-to>198</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>24</Hit_num>
+  <Hit_id>gi|2239708457|gb|MZ924981.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39036 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924981</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>25</Hit_num>
+  <Hit_id>gi|2515309029|gb|ON959513.1|</Hit_id>
+  <Hit_def>Crocidura phuquocensis isolate 182 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>ON959513</Hit_accession>
+  <Hit_len>383</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>111</Hsp_hit-from>
+      <Hsp_hit-to>160</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>26</Hit_num>
+  <Hit_id>gi|2239708539|gb|MZ925022.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z62214 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925022</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>27</Hit_num>
+  <Hit_id>gi|2239708541|gb|MZ925023.1|</Hit_id>
+  <Hit_def>Crocidura quasielongata voucher MVZ:Mamm:238107 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925023</Hit_accession>
+  <Hit_len>303</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>17</Hsp_hit-from>
+      <Hsp_hit-to>66</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>28</Hit_num>
+  <Hit_id>gi|2515309031|gb|ON959514.1|</Hit_id>
+  <Hit_def>Crocidura attenuata isolate CatBa_6_12 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>ON959514</Hit_accession>
+  <Hit_len>360</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>131</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>29</Hit_num>
+  <Hit_id>gi|2239708547|gb|MZ925026.1|</Hit_id>
+  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39321 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925026</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>30</Hit_num>
+  <Hit_id>gi|2239708437|gb|MZ924971.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39056 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924971</Hit_accession>
+  <Hit_len>399</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>31</Hit_num>
+  <Hit_id>gi|2239708621|gb|MZ925063.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213012 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925063</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>32</Hit_num>
+  <Hit_id>gi|2239708611|gb|MZ925058.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213045 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925058</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>33</Hit_num>
+  <Hit_id>gi|2239708627|gb|MZ925066.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213031 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925066</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>34</Hit_num>
+  <Hit_id>gi|2239708421|gb|MZ924963.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39313 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924963</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>35</Hit_num>
+  <Hit_id>gi|2239708545|gb|MZ925025.1|</Hit_id>
+  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39296 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925025</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>36</Hit_num>
+  <Hit_id>gi|2451844315|gb|OQ375199.1|</Hit_id>
+  <Hit_def>Crocidura aff. suaveolens isolate Ch_11_142 brain derived neurotrophic factor (BDNF) gene, exon 2 and partial cds</Hit_def>
+  <Hit_accession>OQ375199</Hit_accession>
+  <Hit_len>330</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>129</Hsp_hit-from>
+      <Hsp_hit-to>178</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>37</Hit_num>
+  <Hit_id>gi|2239708407|gb|MZ924956.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39295 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924956</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>38</Hit_num>
+  <Hit_id>gi|2239708383|gb|MZ924944.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39307 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924944</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>39</Hit_num>
+  <Hit_id>gi|2239708587|gb|MZ925046.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213038 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925046</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>40</Hit_num>
+  <Hit_id>gi|2239708697|gb|MZ925101.1|</Hit_id>
+  <Hit_def>Crocidura tenebrosa voucher LSUMZ:Mammalogy:39023 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925101</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>41</Hit_num>
+  <Hit_id>gi|2239708393|gb|MZ924949.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39281 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924949</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>42</Hit_num>
+  <Hit_id>gi|2239708345|gb|MZ924925.1|</Hit_id>
+  <Hit_def>Crocidura parva voucher MVZ:Mamm:237607 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924925</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>43</Hit_num>
+  <Hit_id>gi|2441427493|gb|OL451422.1|</Hit_id>
+  <Hit_def>Crocidura zaitsevi voucher CVN265 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>OL451422</Hit_accession>
+  <Hit_len>310</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>131</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>44</Hit_num>
+  <Hit_id>gi|2239708369|gb|MZ924937.1|</Hit_id>
+  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39288 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924937</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>45</Hit_num>
+  <Hit_id>gi|2239708669|gb|MZ925087.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213205 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925087</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>46</Hit_num>
+  <Hit_id>gi|2239708555|gb|MZ925030.1|</Hit_id>
+  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39064 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925030</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>47</Hit_num>
+  <Hit_id>gi|2239708661|gb|MZ925083.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher FMNH:MAMM:213201 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925083</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>122</Hsp_hit-from>
+      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>48</Hit_num>
+  <Hit_id>gi|2239708645|gb|MZ925075.1|</Hit_id>
+  <Hit_def>Crocidura solita voucher MVZ:Mamm:237621 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ925075</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>49</Hit_num>
+  <Hit_id>gi|2239708347|gb|MZ924926.1|</Hit_id>
+  <Hit_def>Crocidura parva voucher MVZ:Mamm:237608 brain-derived neurotrophic factor gene, partial cds</Hit_def>
+  <Hit_accession>MZ924926</Hit_accession>
+  <Hit_len>414</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.9463</Hsp_bit-score>
+      <Hsp_score>95</Hsp_score>
+      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>128</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>50</Hit_num>
+  <Hit_id>gi|2441427491|gb|OL451421.1|</Hit_id>
+  <Hit_def>Crocidura zaitsevi voucher CVN232 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
+  <Hit_accession>OL451421</Hit_accession>
+  <Hit_len>327</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>84.2413</Hsp_bit-score>
+      <Hsp_score>92</Hsp_score>
+      <Hsp_evalue>6.83873e-13</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>50</Hsp_query-to>
+      <Hsp_hit-from>124</Hsp_hit-from>
+      <Hsp_hit-to>173</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>48</Hsp_identity>
+      <Hsp_positive>48</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
+      <Hsp_hseq>CCCATGAAGAAAACAATAAGGAYGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
+      <Hsp_midline>|| ||||||||||||||||||| |||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>120367913</Statistics_db-num>
+      <Statistics_db-len>1046609866405</Statistics_db-len>
+      <Statistics_hsp-len>0</Statistics_hsp-len>
+      <Statistics_eff-space>0</Statistics_eff-space>
+      <Statistics_kappa>0.41</Statistics_kappa>
+      <Statistics_lambda>0.625</Statistics_lambda>
+      <Statistics_entropy>0.78</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
