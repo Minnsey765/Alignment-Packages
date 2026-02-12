@@ -2,3 +2,4 @@ biopython
 Bio
 pandas
 matplotlib
+pytest

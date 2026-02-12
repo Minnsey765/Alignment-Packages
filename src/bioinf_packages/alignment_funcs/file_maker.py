@@ -2,10 +2,8 @@
 import os
 import sys
 
-try: #Import from package (elsewhere)
-    from .overlord import overlord_function
-except ImportError: #Import locally
-    from overlord import overlord_function
+
+from .overlord import overlord_function
 
 def file_maker(sort_crit: str, raw_file: str, meta_file: str, csv_path: str, output: str):
     #generate dictionary

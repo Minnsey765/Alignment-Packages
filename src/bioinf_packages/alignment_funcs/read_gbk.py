@@ -3,14 +3,9 @@ from Bio import SeqIO
 import csv
 
 #import symbol key and symbol formatting function
-try: #Import from package (elsewhere)
-    from dictionary_funcs.correction_finder import correction_finder
-#    from .symbol_dictionary import symbol_correction
-#    from .symbol_dictionary import symbol_key as symbol_key
-except ImportError: #use within this function (locally)
-    from dictionary_funcs.correction_finder import correction_finder
-#    from symbol_dictionary import symbol_correction
-#    from symbol_dictionary import symbol_key as symbol_key
+
+from ..dictionary_funcs.correction_finder import correction_finder
+
 
 #read data file in gbk format
 def read_gbk(accession: str, data_folder: str, glossary: str):
@@ -26,7 +21,7 @@ def read_gbk(accession: str, data_folder: str, glossary: str):
     #read the glossary as a dictionary
     with open(glossary, newline='', encoding='utf-8') as f:
         reader = csv.DictReader(f)
-        symbol_key = [row for row in reader]
+        symbol_key = [row for row in reader][0]
 
     gbk_path = os.path.join(data_folder, f"{accession}.gbk")
     if not os.path.exists(gbk_path):

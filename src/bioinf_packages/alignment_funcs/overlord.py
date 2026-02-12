@@ -15,20 +15,15 @@ Entrez.email = "om380@cam.ac.uk"
 - read fasta file in conjunction with metadata and generate dictionary with sequences for specific accession
 - append this dictionary to existing dictionary for all accession numbers
 """
-try: #use from package (elsewhere)
-    from .extract_accessions import extract_accessions
-    from .fetch_fasta import fetch_fasta
-    from .efetch_gene import efetch_gene
-    from .read_gbk import read_gbk
-    from .seq_finder import seq_finder
-except ImportError: #import locally
-    from extract_accessions import extract_accessions
-    from fetch_fasta import fetch_fasta
-    from efetch_gene import efetch_gene
-    from read_gbk import read_gbk
-    from seq_finder import seq_finder
 
-def overlord_function(raw_file: str, meta_file: str, csv_path: str):
+from .extract_accessions import extract_accessions
+from .fetch_fasta import fetch_fasta
+from .efetch_gene import efetch_gene
+from .read_gbk import read_gbk
+from .seq_finder import seq_finder
+
+
+def overlord_function(raw_file: str, meta_file: str, csv_path: str, glossary: str):
     #get list of accession numbers
     accessions = extract_accessions(csv_path)
 
@@ -45,7 +40,7 @@ def overlord_function(raw_file: str, meta_file: str, csv_path: str):
         efetch_gene(value, meta_file)
 
         #read meta data
-        meta_data = read_gbk(value, meta_file)
+        meta_data = read_gbk(value, meta_file, glossary)
         
         #add sequences to meta data
         mini_dict = seq_finder(meta_data, raw_file)
