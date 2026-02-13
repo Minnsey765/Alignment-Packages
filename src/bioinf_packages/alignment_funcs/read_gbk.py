@@ -44,7 +44,6 @@ def read_gbk(accession: str, data_folder: str, glossary: str):
                 # Skip if no symbol or it's a tRNA gene
                 if not symbol or "trna" in symbol.lower():
                     continue
-                
                 #make sure symbol format is standardized
                 symbol_correct = correction_finder(symbol, symbol_key, glossary)
                 gene_info = {

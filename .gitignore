@@ -173,8 +173,9 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
-#ignore gbk and fasta
+#ignore gbk, nexus, and fasta
 **/*.gbk
 **/*.fasta
+**/*.nex
 
 # End of https://www.toptal.com/developers/gitignore/api/python

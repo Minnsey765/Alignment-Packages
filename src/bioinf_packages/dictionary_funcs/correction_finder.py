@@ -27,7 +27,7 @@ def correction_finder(incorrect: str, key: dict, glossary: str):
     #if it does
     else:
     #return as string
-        correct = key[incorrect][0]
+        correct = key[incorrect]
     return correct
 
 #from write_dict_to_csv import my_dict

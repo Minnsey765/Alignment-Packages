@@ -54,7 +54,13 @@ my_dict = {
     "small subunit ribosomal RNA" : ["12S_rRNA"]
 }
 
-with open("dictionary_funcs/glossary.csv", "w", newline="") as f:
+with open("src/bioinf_packages/dictionary_funcs/glossary.csv", "w", newline="") as f:
     w = csv.DictWriter(f, my_dict.keys())
     w.writeheader()
-    w.writerow(my_dict)
+
+    #stop it from writing "['WXYZ']" as a string into the dictionary
+    rm_brkt = {
+        k : v[0] if isinstance(v,list) and v else ""
+        for k, v in my_dict.items()
+    }
+    w.writerow(rm_brkt)
