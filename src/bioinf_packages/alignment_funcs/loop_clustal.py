@@ -1,9 +1,9 @@
 #run through all fasta files and align them
 
 try: #import from package (elsewhere)
-    from .clustalOmega import run_clustalo
+    from ._clustalOmega import run_clustalo
 except ImportError: #Import locally
-    from clustalOmega import run_clustalo
+    from _clustalOmega import run_clustalo
 
 import time
 from pathlib import Path

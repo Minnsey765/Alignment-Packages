@@ -16,11 +16,11 @@ Entrez.email = "om380@cam.ac.uk"
 - append this dictionary to existing dictionary for all accession numbers
 """
 
-from .extract_accessions import extract_accessions
-from .fetch_fasta import fetch_fasta
-from .efetch_gene import efetch_gene
-from .read_gbk import read_gbk
-from .seq_finder import seq_finder
+from ._extract_accessions import extract_accessions
+from ._fetch_fasta import fetch_fasta
+from ._efetch_gene import efetch_gene
+from ._read_gbk import read_gbk
+from ._seq_finder import seq_finder
 
 
 def overlord_function(raw_file: str, meta_file: str, csv_path: str, glossary: str):

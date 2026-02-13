@@ -1,10 +1,12 @@
 from Bio import SeqIO
 import os
 
-try: #import from package (elsewhere)
-    from .read_gbk import read_gbk
-except ImportError: #import locally
-    from read_gbk import read_gbk
+#try: #import from package (elsewhere)
+#    from ._read_gbk import read_gbk
+#except ImportError: #import locally
+#    from _read_gbk import read_gbk
+
+
 #takes output from read_gbk and replaces start and stop with actual sequence
 def seq_finder(meta_data: list[dict], raw_file: str):
     # identify correct fasta sequence

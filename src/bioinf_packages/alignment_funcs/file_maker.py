@@ -3,7 +3,7 @@ import os
 import sys
 
 
-from .overlord import overlord_function
+from ._overlord import overlord_function
 
 def file_maker(sort_crit: str, raw_file: str, meta_file: str, csv_path: str, output: str):
     #generate dictionary

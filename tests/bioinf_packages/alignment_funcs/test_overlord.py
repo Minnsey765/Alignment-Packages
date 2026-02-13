@@ -1,4 +1,4 @@
-from bioinf_packages.alignment_funcs.overlord import overlord_function
+from bioinf_packages.alignment_funcs._overlord import overlord_function
 import random
 import re
 import csv
@@ -40,4 +40,9 @@ def test_overlord_returnsExpected():
     assert re.fullmatch(acc_pattern, dict[i]['accession']), \
         f"Invalid format at index {i}: {dict[i]['accession']!r}"
     
+    #assert sequence exists in dictionary
+    seq_pattern = r"^[GATC]+$"
+    assert re.fullmatch(seq_pattern, dict[i]['sequence'][i]), \
+        f"Invalid format at index {i}: {dict[i]['sequence']!r}"
+
     #assert False

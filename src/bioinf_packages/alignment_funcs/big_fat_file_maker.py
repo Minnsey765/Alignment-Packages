@@ -3,9 +3,9 @@
 import os
 import sys
 try: #Import from package (elsewhere)
-    from .matcher import find_best_key
+    from ._matcher import find_best_key
 except ImportError: #import locally
-    from matcher import find_best_key
+    from _matcher import find_best_key
     
 import pandas as pd
 from Bio import SeqIO

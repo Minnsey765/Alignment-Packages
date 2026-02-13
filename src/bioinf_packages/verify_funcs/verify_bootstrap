@@ -1,13 +1,13 @@
 #Repeat loop_verify function to resample sequence for a boostrap and compare to entry hits from blasting the entire sequence
 
 try: #Import from package (elsewhere)
-    from .verify_seq import verify_seq
-    from .species_parser import species_parser
-    from .gene_parser import gene_parser
+    from ._verify_seq import verify_seq
+    from ._species_parser import species_parser
+    from ._gene_parser import gene_parser
 except ImportError: #Import locally
-    from verify_seq import verify_seq
-    from species_parser import species_parser
-    from gene_parser import gene_parser
+    from _verify_seq import verify_seq
+    from _species_parser import species_parser
+    from _gene_parser import gene_parser
 
 from Bio import SeqIO
 import os
