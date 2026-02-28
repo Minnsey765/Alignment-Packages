@@ -1,0 +1,29 @@
+Data-driven functionalities
+
+- Stats test for verify_boostrap function
+- Function for phylogenetic bootstrap
+- Code for cambridge HPC
+- Function for old phylo verify method (yuan et al)
+
+
+Quality of life functionalities
+
+- Auto generate folders for Data
+    - Raw fastas
+    - Meta Data
+    - aligned nexus 
+    - trimmed nexus?
+    - full/concatenated alignments
+    - verify/boostrap data folder
+- Auto fill out glossary using meta_data
+- Auto trim aligned fastas (nexus files)
+
+
+Test functionalities
+
+- overlord negative
+- file_maker positive and negative
+- loop_clustal positive and negative
+- big_fat_file_maker positive and negative
+- verify_bootstrap positive and negative
+- eventually other verify functionalities positive and negative

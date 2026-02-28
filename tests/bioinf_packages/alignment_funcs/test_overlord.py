@@ -1,7 +1,11 @@
+#import sys
+#print(sys.executable)
 from bioinf_packages.alignment_funcs._overlord import overlord_function
 import random
 import re
 import csv
+
+#RUN pytest IN TERMINAL!
 
 
 def test_overlord_returnsExpected():
