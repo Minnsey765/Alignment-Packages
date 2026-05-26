@@ -1,14 +1,14 @@
 #lowk a useless function
 #generate a match score for hits found in verify seq
 
-try: #Import from package (elsewhere)
-    from ._verify_seq import verify_seq
-    from ._species_parser import species_parser
-    from ._gene_parser import gene_parser
-except ImportError: #Import locally
-    from bioinf_packages.verify_funcs._verify_seq import verify_seq
-    from bioinf_packages.verify_funcs._species_parser import species_parser
-    from bioinf_packages.verify_funcs._gene_parser import gene_parser
+#try: #Import from package (elsewhere)
+from ._verify_seq import verify_seq
+from ._species_parser import species_parser
+from ._gene_parser import gene_parser
+#except ImportError: #Import locally
+#    from bioinf_packages.verify_funcs._verify_seq import verify_seq
+#    from bioinf_packages.verify_funcs._species_parser import species_parser
+#    from bioinf_packages.verify_funcs._gene_parser import gene_parser
 from Bio import SeqIO
 import os
 

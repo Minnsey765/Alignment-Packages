@@ -5,9 +5,9 @@ import sys
 
 from ._overlord import overlord_function
 
-def file_maker(sort_crit: str, raw_file: str, meta_file: str, csv_path: str, output: str):
+def file_maker(sort_crit: str, raw_file: str, meta_file: str, csv_path: str, output: str, glossary: str):
     #generate dictionary
-    dict = overlord_function(raw_file, meta_file, csv_path)
+    dict = overlord_function(raw_file, meta_file, csv_path, glossary)
     #dictionary list is apparently list of lists with single dictionary entry hence [0][0]
     #print((dict[0]))
 

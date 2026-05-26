@@ -19,4 +19,4 @@ def loop_clustal(fasta_dir: str, output_dir: str, interval):
         #time.sleep(interval)  # pause for 30 seconds
 
 # Usage
-loop_clustal("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/fasta_data", "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/aligned_fastas", interval=30)
+#loop_clustal("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/fasta_data", "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/aligned_fastas", interval=30)
