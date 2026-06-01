@@ -3,3 +3,4 @@ Bio
 pandas
 matplotlib
 pytest
+scipy

@@ -3,7 +3,7 @@
 
 #try: #Import from package (elsewhere)
 from ._verify_seq import verify_seq
-from ._species_parser import species_parser
+from ._species_parser_old import species_parser_old
 from ._gene_parser import gene_parser
 #except ImportError: #Import locally
 #    from bioinf_packages.verify_funcs._verify_seq import verify_seq

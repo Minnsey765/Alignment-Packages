@@ -15,7 +15,7 @@ def correction_finder(incorrect: str, key: dict, glossary: str):
         #add new symbol to dictionary
         key[incorrect] = []
         #overwrite old glossary csv
-        with open("dictionary_funcs/mycsvfile.csv", "w", newline="") as f:
+        with open(glossary, "w", newline="") as f:
             w = csv.DictWriter(f, key.keys())
             w.writeheader()
             w.writerow(key)

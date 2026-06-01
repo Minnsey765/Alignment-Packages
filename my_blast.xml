@@ -5,7 +5,7 @@
   <BlastOutput_version>BLASTN 2.17.0+</BlastOutput_version>
   <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
   <BlastOutput_db>core_nt</BlastOutput_db>
-  <BlastOutput_query-ID>Query_7828213</BlastOutput_query-ID>
+  <BlastOutput_query-ID>Query_1154685</BlastOutput_query-ID>
   <BlastOutput_query-def>No definition line</BlastOutput_query-def>
   <BlastOutput_query-len>50</BlastOutput_query-len>
   <BlastOutput_param>
@@ -21,1415 +21,1415 @@
 <BlastOutput_iterations>
 <Iteration>
   <Iteration_iter-num>1</Iteration_iter-num>
-  <Iteration_query-ID>Query_7828213</Iteration_query-ID>
+  <Iteration_query-ID>Query_1154685</Iteration_query-ID>
   <Iteration_query-def>No definition line</Iteration_query-def>
   <Iteration_query-len>50</Iteration_query-len>
 <Iteration_hits>
 <Hit>
   <Hit_num>1</Hit_num>
-  <Hit_id>gi|2239708513|gb|MZ925009.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61994 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925009</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|300486650|gb|GU981107.1|</Hit_id>
+  <Hit_def>Anourosorex yamashinai isolate Anyamas2 apolipoprotein B (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>GU981107</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>91.4547</Hsp_bit-score>
+      <Hsp_score>100</Hsp_score>
+      <Hsp_evalue>4.6589e-15</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>2</Hit_num>
-  <Hit_id>gi|2239708551|gb|MZ925028.1|</Hit_id>
-  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39032 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925028</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|108794356|gb|DQ630183.1|</Hit_id>
+  <Hit_def>Anourosorex yamashinai isolate 2 ApoB (ApoB) gene, partial cds &gt;gi|108794360|gb|DQ630185.1| Anourosorex yamashinai isolate 1 ApoB (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>DQ630183</Hit_accession>
+  <Hit_len>517</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>91.4547</Hsp_bit-score>
+      <Hsp_score>100</Hsp_score>
+      <Hsp_evalue>4.6589e-15</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>212</Hsp_hit-from>
+      <Hsp_hit-to>261</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>3</Hit_num>
-  <Hit_id>gi|2239708433|gb|MZ924969.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39049 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924969</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|950834841|gb|KP995386.1|</Hit_id>
+  <Hit_def>Anourosorex squamipes voucher ZMMU:Chi11-130 apolipoprotein B (ApoB) gene, partial cds &gt;gi|1524346481|gb|MH331993.1| Anourosorex squamipes voucher ZMMU:S-195174 Apolipoprotein B (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>KP995386</Hit_accession>
+  <Hit_len>458</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>91.4547</Hsp_bit-score>
+      <Hsp_score>100</Hsp_score>
+      <Hsp_evalue>4.6589e-15</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>185</Hsp_hit-from>
+      <Hsp_hit-to>234</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>4</Hit_num>
-  <Hit_id>gi|2441427489|gb|OL451420.1|</Hit_id>
-  <Hit_def>Crocidura zaitsevi voucher CVN231 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>OL451420</Hit_accession>
-  <Hit_len>405</Hit_len>
+  <Hit_id>gi|300486648|gb|GU981106.1|</Hit_id>
+  <Hit_def>Anourosorex squamipes isolate Ansquam7 apolipoprotein B (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>GU981106</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>91.4547</Hsp_bit-score>
+      <Hsp_score>100</Hsp_score>
+      <Hsp_evalue>4.6589e-15</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>131</Hsp_hit-from>
-      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>5</Hit_num>
-  <Hit_id>gi|2441427497|gb|OL451424.1|</Hit_id>
-  <Hit_def>Crocidura zaitsevi voucher AVA14-43 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>OL451424</Hit_accession>
-  <Hit_len>405</Hit_len>
+  <Hit_id>gi|1060647637|dbj|LC124839.1|</Hit_id>
+  <Hit_def>Anourosorex yamashinai APOB gene for apolipoprotein B, partial cds, specimen_voucher: personal collection:Satoshi D. Ohdachi:SDO-03/3/12-5</Hit_def>
+  <Hit_accession>LC124839</Hit_accession>
+  <Hit_len>916</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>91.4547</Hsp_bit-score>
+      <Hsp_score>100</Hsp_score>
+      <Hsp_evalue>4.6589e-15</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>131</Hsp_hit-from>
-      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_hit-from>133</Hsp_hit-from>
+      <Hsp_hit-to>182</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>6</Hit_num>
-  <Hit_id>gi|2239708585|gb|MZ925045.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:218775 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925045</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|108794236|gb|DQ630123.1|</Hit_id>
+  <Hit_def>Anourosorex squamipes isolate 1 ApoB (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>DQ630123</Hit_accession>
+  <Hit_len>482</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>87.848</Hsp_bit-score>
+      <Hsp_score>96</Hsp_score>
+      <Hsp_evalue>5.67571e-14</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>196</Hsp_hit-from>
+      <Hsp_hit-to>245</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
       <Hsp_identity>49</Hsp_identity>
       <Hsp_positive>49</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATGTCGAAGTGTCTCCATTCACAGTAGNGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||| ||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>7</Hit_num>
-  <Hit_id>gi|2239708531|gb|MZ925018.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61724 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925018</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009755|gb|MW670247.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 524 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670247</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>8</Hit_num>
-  <Hit_id>gi|2451844335|gb|OQ375209.1|</Hit_id>
-  <Hit_def>Crocidura aff. suaveolens ZMMU S-182392 isolate Buryatia_45 brain derived neurotrophic factor (BDNF) gene, exon 2 and partial cds</Hit_def>
-  <Hit_accession>OQ375209</Hit_accession>
-  <Hit_len>391</Hit_len>
+  <Hit_id>gi|2083009817|gb|MW670278.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 556 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670278</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>129</Hsp_hit-from>
-      <Hsp_hit-to>178</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>9</Hit_num>
-  <Hit_id>gi|2239708351|gb|MZ924928.1|</Hit_id>
-  <Hit_def>Crocidura parva voucher NMV&lt;AUS&gt;:MAMM Z57055 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924928</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009761|gb|MW670250.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 527 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670250</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>10</Hit_num>
-  <Hit_id>gi|2239708605|gb|MZ925055.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213009 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925055</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009859|gb|MW670299.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 579 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670299</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>11</Hit_num>
-  <Hit_id>gi|2239708441|gb|MZ924973.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39030 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924973</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2750994285|gb|OR148485.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate MT201904150 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994287|gb|OR148486.1| Soriculus nigrescens isolate MT201904156 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994289|gb|OR148487.1| Soriculus nigrescens isolate MT201904169 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994291|gb|OR148488.1| Soriculus nigrescens isolate MT201904246 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994293|gb|OR148489.1| Soriculus nigrescens isolate MT201904261 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>OR148485</Hit_accession>
+  <Hit_len>507</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>219</Hsp_hit-from>
+      <Hsp_hit-to>268</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>12</Hit_num>
-  <Hit_id>gi|2239708379|gb|MZ924942.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39305 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924942</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009773|gb|MW670256.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 533 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670256</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>13</Hit_num>
-  <Hit_id>gi|2239708389|gb|MZ924947.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39317 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924947</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009741|gb|MW670240.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 517 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670240</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>14</Hit_num>
-  <Hit_id>gi|2239708477|gb|MZ924991.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210544 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924991</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009775|gb|MW670257.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 534 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670257</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>15</Hit_num>
-  <Hit_id>gi|2239708505|gb|MZ925005.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:213341 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925005</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009841|gb|MW670290.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 570 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670290</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>16</Hit_num>
-  <Hit_id>gi|2239708475|gb|MZ924990.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210597 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924990</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009823|gb|MW670281.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 559 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670281</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>17</Hit_num>
-  <Hit_id>gi|2239708625|gb|MZ925065.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213019 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925065</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009903|gb|MW670321.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 970 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670321</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>18</Hit_num>
-  <Hit_id>gi|2239708481|gb|MZ924993.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher FMNH:MAMM:210549 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924993</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009839|gb|MW670289.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 569 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670289</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>19</Hit_num>
-  <Hit_id>gi|2239708563|gb|MZ925034.1|</Hit_id>
-  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39037 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925034</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009757|gb|MW670248.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 525 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670248</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>20</Hit_num>
-  <Hit_id>gi|2239708689|gb|MZ925097.1|</Hit_id>
-  <Hit_def>Crocidura tenebrosa voucher LSUMZ:Mammalogy:39268 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925097</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009857|gb|MW670298.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 578 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670298</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>21</Hit_num>
-  <Hit_id>gi|2239708521|gb|MZ925013.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61685 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925013</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009753|gb|MW670246.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 523 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670246</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>22</Hit_num>
-  <Hit_id>gi|2239708503|gb|MZ925004.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z61566 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925004</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009813|gb|MW670276.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 554 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670276</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>23</Hit_num>
-  <Hit_id>gi|2304586305|gb|OL587027.1|</Hit_id>
-  <Hit_def>Sorex bedfordiae isolate EEX0391 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>OL587027</Hit_accession>
-  <Hit_len>482</Hit_len>
+  <Hit_id>gi|2083009749|gb|MW670244.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 521 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670244</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>149</Hsp_hit-from>
-      <Hsp_hit-to>198</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>24</Hit_num>
-  <Hit_id>gi|2239708457|gb|MZ924981.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39036 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924981</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009751|gb|MW670245.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 522 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670245</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>25</Hit_num>
-  <Hit_id>gi|2515309029|gb|ON959513.1|</Hit_id>
-  <Hit_def>Crocidura phuquocensis isolate 182 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>ON959513</Hit_accession>
-  <Hit_len>383</Hit_len>
+  <Hit_id>gi|2083009771|gb|MW670255.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 532 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670255</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>111</Hsp_hit-from>
-      <Hsp_hit-to>160</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>26</Hit_num>
-  <Hit_id>gi|2239708539|gb|MZ925022.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher NMV&lt;AUS&gt;:MAMM Z62214 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925022</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009905|gb|MW670322.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 971 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670322</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>27</Hit_num>
-  <Hit_id>gi|2239708541|gb|MZ925023.1|</Hit_id>
-  <Hit_def>Crocidura quasielongata voucher MVZ:Mamm:238107 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925023</Hit_accession>
-  <Hit_len>303</Hit_len>
+  <Hit_id>gi|2083009737|gb|MW670238.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 515 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670238</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>17</Hsp_hit-from>
-      <Hsp_hit-to>66</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>28</Hit_num>
-  <Hit_id>gi|2515309031|gb|ON959514.1|</Hit_id>
-  <Hit_def>Crocidura attenuata isolate CatBa_6_12 brain-derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>ON959514</Hit_accession>
-  <Hit_len>360</Hit_len>
+  <Hit_id>gi|2083009863|gb|MW670301.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 581 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670301</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>131</Hsp_hit-from>
-      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>29</Hit_num>
-  <Hit_id>gi|2239708547|gb|MZ925026.1|</Hit_id>
-  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39321 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925026</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|3057431571|gb|PX253823.1|</Hit_id>
+  <Hit_def>Chodsigoa hypsibia isolate CSD332 apolipoprotein B (ApoB) gene, partial cds</Hit_def>
+  <Hit_accession>PX253823</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATTGAAGCGTCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| | |||| |||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>30</Hit_num>
-  <Hit_id>gi|2239708437|gb|MZ924971.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39056 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924971</Hit_accession>
-  <Hit_len>399</Hit_len>
+  <Hit_id>gi|2083009743|gb|MW670241.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 518 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670241</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>31</Hit_num>
-  <Hit_id>gi|2239708621|gb|MZ925063.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213012 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925063</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009759|gb|MW670249.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 526 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670249</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>32</Hit_num>
-  <Hit_id>gi|2239708611|gb|MZ925058.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213045 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925058</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009843|gb|MW670291.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 571 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670291</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>33</Hit_num>
-  <Hit_id>gi|2239708627|gb|MZ925066.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213031 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925066</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009815|gb|MW670277.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 555 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670277</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>34</Hit_num>
-  <Hit_id>gi|2239708421|gb|MZ924963.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39313 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924963</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009821|gb|MW670280.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 558 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670280</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>35</Hit_num>
-  <Hit_id>gi|2239708545|gb|MZ925025.1|</Hit_id>
-  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39296 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925025</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2750994263|gb|OR148474.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate ML20205300 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994265|gb|OR148475.1| Soriculus nigrescens isolate ML20205377 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994267|gb|OR148476.1| Soriculus nigrescens isolate ML20205378 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994269|gb|OR148477.1| Soriculus nigrescens isolate ML20205379 apolipoprotein B (apob) gene, partial cds &gt;gi|2750994271|gb|OR148478.1| Soriculus nigrescens isolate ML20205380 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>OR148474</Hit_accession>
+  <Hit_len>507</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>219</Hsp_hit-from>
+      <Hsp_hit-to>268</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>36</Hit_num>
-  <Hit_id>gi|2451844315|gb|OQ375199.1|</Hit_id>
-  <Hit_def>Crocidura aff. suaveolens isolate Ch_11_142 brain derived neurotrophic factor (BDNF) gene, exon 2 and partial cds</Hit_def>
-  <Hit_accession>OQ375199</Hit_accession>
-  <Hit_len>330</Hit_len>
+  <Hit_id>gi|2083009851|gb|MW670295.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 575 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670295</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>129</Hsp_hit-from>
-      <Hsp_hit-to>178</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>37</Hit_num>
-  <Hit_id>gi|2239708407|gb|MZ924956.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39295 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924956</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009849|gb|MW670294.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 574 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670294</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>38</Hit_num>
-  <Hit_id>gi|2239708383|gb|MZ924944.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39307 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924944</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009853|gb|MW670296.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 576 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670296</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>39</Hit_num>
-  <Hit_id>gi|2239708587|gb|MZ925046.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213038 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925046</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009819|gb|MW670279.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 557 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670279</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>40</Hit_num>
-  <Hit_id>gi|2239708697|gb|MZ925101.1|</Hit_id>
-  <Hit_def>Crocidura tenebrosa voucher LSUMZ:Mammalogy:39023 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925101</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009739|gb|MW670239.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 516 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670239</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>41</Hit_num>
-  <Hit_id>gi|2239708393|gb|MZ924949.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39281 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924949</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009777|gb|MW670258.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 535 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670258</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>42</Hit_num>
-  <Hit_id>gi|2239708345|gb|MZ924925.1|</Hit_id>
-  <Hit_def>Crocidura parva voucher MVZ:Mamm:237607 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924925</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009847|gb|MW670293.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 573 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670293</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>43</Hit_num>
-  <Hit_id>gi|2441427493|gb|OL451422.1|</Hit_id>
-  <Hit_def>Crocidura zaitsevi voucher CVN265 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>OL451422</Hit_accession>
-  <Hit_len>310</Hit_len>
+  <Hit_id>gi|2083009747|gb|MW670243.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 520 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670243</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>131</Hsp_hit-from>
-      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>44</Hit_num>
-  <Hit_id>gi|2239708369|gb|MZ924937.1|</Hit_id>
-  <Hit_def>Crocidura pseudorhoditis voucher LSUMZ:Mammalogy:39288 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924937</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009899|gb|MW670319.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 968 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670319</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>45</Hit_num>
-  <Hit_id>gi|2239708669|gb|MZ925087.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213205 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925087</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009865|gb|MW670302.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 582 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670302</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>46</Hit_num>
-  <Hit_id>gi|2239708555|gb|MZ925030.1|</Hit_id>
-  <Hit_def>Crocidura rhoditis voucher LSUMZ:Mammalogy:39064 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925030</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009763|gb|MW670251.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 528 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670251</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>47</Hit_num>
-  <Hit_id>gi|2239708661|gb|MZ925083.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher FMNH:MAMM:213201 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925083</Hit_accession>
-  <Hit_len>396</Hit_len>
+  <Hit_id>gi|2083009861|gb|MW670300.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 580 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670300</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>122</Hsp_hit-from>
-      <Hsp_hit-to>171</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>48</Hit_num>
-  <Hit_id>gi|2239708645|gb|MZ925075.1|</Hit_id>
-  <Hit_def>Crocidura solita voucher MVZ:Mamm:237621 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ925075</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009867|gb|MW670303.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 583 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670303</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>49</Hit_num>
-  <Hit_id>gi|2239708347|gb|MZ924926.1|</Hit_id>
-  <Hit_def>Crocidura parva voucher MVZ:Mamm:237608 brain-derived neurotrophic factor gene, partial cds</Hit_def>
-  <Hit_accession>MZ924926</Hit_accession>
-  <Hit_len>414</Hit_len>
+  <Hit_id>gi|2083009745|gb|MW670242.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 519 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670242</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>86.9463</Hsp_bit-score>
-      <Hsp_score>95</Hsp_score>
-      <Hsp_evalue>1.95933e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>128</Hsp_hit-from>
-      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>49</Hsp_identity>
-      <Hsp_positive>49</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| |||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 <Hit>
   <Hit_num>50</Hit_num>
-  <Hit_id>gi|2441427491|gb|OL451421.1|</Hit_id>
-  <Hit_def>Crocidura zaitsevi voucher CVN232 brain derived neurotrophic factor (BDNF) gene, partial cds</Hit_def>
-  <Hit_accession>OL451421</Hit_accession>
-  <Hit_len>327</Hit_len>
+  <Hit_id>gi|2083009845|gb|MW670292.1|</Hit_id>
+  <Hit_def>Soriculus nigrescens isolate 572 apolipoprotein B (apob) gene, partial cds</Hit_def>
+  <Hit_accession>MW670292</Hit_accession>
+  <Hit_len>513</Hit_len>
   <Hit_hsps>
     <Hsp>
       <Hsp_num>1</Hsp_num>
-      <Hsp_bit-score>84.2413</Hsp_bit-score>
-      <Hsp_score>92</Hsp_score>
-      <Hsp_evalue>6.83873e-13</Hsp_evalue>
+      <Hsp_bit-score>73.4211</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>1.25016e-09</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>50</Hsp_query-to>
-      <Hsp_hit-from>124</Hsp_hit-from>
-      <Hsp_hit-to>173</Hsp_hit-to>
+      <Hsp_hit-from>210</Hsp_hit-from>
+      <Hsp_hit-to>259</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
-      <Hsp_identity>48</Hsp_identity>
-      <Hsp_positive>48</Hsp_positive>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>50</Hsp_align-len>
-      <Hsp_qseq>CCAATGAAGAAAACAATAAGGACGCGGACTTGTACACTTCCCGAGTGATG</Hsp_qseq>
-      <Hsp_hseq>CCCATGAAGAAAACAATAAGGAYGCGGACTTGTACACTTCCCGAGTGATG</Hsp_hseq>
-      <Hsp_midline>|| ||||||||||||||||||| |||||||||||||||||||||||||||</Hsp_midline>
+      <Hsp_qseq>TAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_qseq>
+      <Hsp_hseq>TAATATCGAAGCATCTCCATCCACAGTAGAGATGTTTCCATTTGGTTATG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||  ||||||| |||||||||||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
 </Hit>
 </Iteration_hits>
   <Iteration_stat>
     <Statistics>
-      <Statistics_db-num>120367913</Statistics_db-num>
-      <Statistics_db-len>1046609866405</Statistics_db-len>
+      <Statistics_db-num>125940211</Statistics_db-num>
+      <Statistics_db-len>1780842873</Statistics_db-len>
       <Statistics_hsp-len>0</Statistics_hsp-len>
       <Statistics_eff-space>0</Statistics_eff-space>
       <Statistics_kappa>0.41</Statistics_kappa>
