@@ -178,5 +178,12 @@ pyrightconfig.json
 **/*.fasta
 **/*.nex
 **/*.xml
+**/*.bionj
+**/*.ckp.gz
+**/*.contree
+**/*.iqtree
+**/*.mldist
+**/*.treefile
+**/*.png
 
 # End of https://www.toptal.com/developers/gitignore/api/python

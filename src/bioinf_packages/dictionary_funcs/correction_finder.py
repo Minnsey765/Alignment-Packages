@@ -13,7 +13,7 @@ def correction_finder(incorrect: str, key: dict, glossary: str):
     #if it doesn't
     if value is None:
         #add new symbol to dictionary
-        key[incorrect] = []
+        key[incorrect] = ""
         #overwrite old glossary csv
         with open(glossary, "w", newline="") as f:
             w = csv.DictWriter(f, key.keys())
@@ -24,6 +24,10 @@ def correction_finder(incorrect: str, key: dict, glossary: str):
         raise GlossaryIncompleteError(
             "Before continuing, glossary must be filled in with new term identified."
         )
+    elif value.strip() == "":
+        raise GlossaryIncompleteError(
+        f"Glossary entry for '{incorrect}' exists but has not yet been assigned a standard symbol."
+    )
     #if it does
     else:
     #return as string
