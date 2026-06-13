@@ -1,83 +1,89 @@
-from _phylo_verify import build_scaffold_tree
+from _phylo_verify import (build_scaffold_tree, plot_scaffold_tree)
 from pathlib import Path
-from Bio import Phylo
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import json
+from bioinf_packages.verify_funcs._species_parser import load_taxonomy
 
 
-def plot_scaffold_tree(treefile: str,
-                       id_map_path: str = None,
-                       save_path: str = None):
-    """
-    Plot a scaffold tree, restoring full headers if an id_map is provided.
+concatenated_nex = (
+    "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/"
+    "verify_data/msa_verify/msaVerify_nexus/Framework_alignment/"
+    "concatenated/concatenated_aln.nex"
+)
 
-    Parameters
-    ----------
-    treefile    : str   path to IQ-TREE .treefile (Newick)
-    id_map_path : str   path to _id_map.json — if provided, short IDs
-                        are replaced with full headers for readable labels
-    save_path   : str   path to save figure (default: same dir as treefile)
-    """
-    tree = Phylo.read(treefile, "newick")
+scaffold_tree_dir = (
+    "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/"
+    "verify_data/msa_verify/msaVerify_nexus/Framework_alignment/"
+    "concatenated/scaffold_tree"
+)
 
-    # Restore full headers if id_map provided
-    if id_map_path and Path(id_map_path).exists():
-        with open(id_map_path, "r") as f:
-            id_map = json.load(f)
-        for clade in tree.get_terminals():
-            if clade.name and clade.name in id_map:
-                # Extract just genus_species and accession for readability
-                full_id = id_map[clade.name]
-                parts   = full_id.split("|")
-                taxon   = parts[0]
-                acc     = next((p.split(":",1)[1] for p in parts
-                                if p.startswith("accession:")), "")
-                clade.name = f"{taxon}_{acc}" if acc else taxon
+taxonomy_path = "C:/Users/ojmin/OneDrive/Documents/UNI/Python_Packages/src/bioinf_packages/dictionary_funcs/taxonomy_data.csv"
+iqtree_bin    = "C:/Program Files/iqtree-3.0.1-Windows/bin/iqtree3.exe"
 
-    n_terminals = len(tree.get_terminals())
-    fig, ax     = plt.subplots(figsize=(14, max(8, n_terminals * 0.4)))
+# ── Load taxonomy (needed for constraint tree) ────────────────────────────────
 
-    Phylo.draw(tree, axes=ax, do_show=False)
+taxonomy = load_taxonomy(taxonomy_path)
 
-    gene_name = Path(treefile).stem
-    ax.set_title(f"Scaffold tree — {gene_name}", fontsize=12)
-    ax.set_xlabel("Branch length (substitutions per site)")
-    plt.tight_layout()
+# ── Build scaffold tree ───────────────────────────────────────────────────────
+# The concatenated Nexus already uses plain species names (not short IDs)
+# so IQ-TREE can read it directly. No id_map needed here.
+# Pass taxonomy and the Nexus path to generate a constraint tree that
+# enforces order-level monophyly and prevents long-branch attraction.
 
-    if save_path is None:
-        save_path = str(treefile).replace(".treefile", "_tree.png")
+result = build_scaffold_tree(
+    scaffold_nexus         = concatenated_nex,
+    scaffold_tree_dir      = scaffold_tree_dir,
+    taxonomy               = taxonomy,
+    scaffold_fasta_aligned = None,   # concatenated Nexus has plain names
+                                     # so no FASTA needed for constraint —
+                                     # see note below
+    iqtree_bin             = iqtree_bin,
+    model                  = "TEST",   # or "TEST" for auto model selection
+    bootstrap              = 1000,
+    n_threads              = 4,
+    seed                   = 12345,
+)
 
-    plt.savefig(save_path, dpi=150, bbox_inches="tight")
-    plt.close()
-    print(f"Figure saved: {save_path}")
-    return save_path
+print(f"\nScaffold tree: {result['treefile']}")
 
-scaffold_trees = {}
+# ── Plot scaffold tree ────────────────────────────────────────────────────────
+# The concatenated Nexus uses full species names so no id_map is needed —
+# the labels are already readable.
 
-for nex_file in Path("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_nexus/Framework_alignment/genes").glob("*_short_aln.nex"):
-    gene_name = nex_file.stem.replace("_short_aln", "")
-    print(f"\nBuilding scaffold tree for {gene_name}...")
-
-    result = build_scaffold_tree(
-        scaffold_nexus    = str(nex_file),
-        scaffold_tree_dir = f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_trees/scaffold_trees/{gene_name}",
-        iqtree_bin        = "C:/Program Files/iqtree-3.0.1-Windows/bin/iqtree3.exe",
-        seed              = 12345,
-    )
-    scaffold_trees[gene_name] = result
-    print(f"  Tree: {result['treefile']}")
+plot_scaffold_tree(
+    treefile    = result["treefile"],
+    id_map_path = None,          # not needed — names are already full
+    save_path   = str(
+        Path(scaffold_tree_dir) / "concatenated_scaffold_tree.png"
+    ),
+)
 
 
-for gene_name, result in scaffold_trees.items():
+
+
+
+#scaffold_trees = {}
+
+#for nex_file in Path("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_nexus/Framework_alignment/genes").glob("*_short_aln.nex"):
+#    gene_name = nex_file.stem.replace("_short_aln", "")
+#    print(f"\nBuilding scaffold tree for {gene_name}...")
+
+#    result = build_scaffold_tree(
+#        scaffold_nexus    = str(nex_file),
+#        scaffold_tree_dir = f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_trees/scaffold_trees/{gene_name}",
+#        iqtree_bin        = "C:/Program Files/iqtree-3.0.1-Windows/bin/iqtree3.exe",
+#        seed              = 12345,
+#    )
+#    scaffold_trees[gene_name] = result
+#    print(f"  Tree: {result['treefile']}")
+
+
+#for gene_name, result in scaffold_trees.items():
 
     # Find the id_map — it's in the Framework_alignment folder
-    id_map_path = (f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_nexus/Framework_alignment/genes"
-                   f"{gene_name}_id_map.json")
+#    id_map_path = (f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_nexus/Framework_alignment/genes"
+#                   f"{gene_name}_id_map.json")
 
-    plot_scaffold_tree(
-        treefile    = result["treefile"],
-        id_map_path = id_map_path,
-        save_path   = f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_trees/scaffold_trees/{gene_name}/{gene_name}_tree.png"
-    )
+#    plot_scaffold_tree(
+#        treefile    = result["treefile"],
+#        id_map_path = id_map_path,
+#        save_path   = f"C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_trees/scaffold_trees/{gene_name}/{gene_name}_tree.png"
+#    )

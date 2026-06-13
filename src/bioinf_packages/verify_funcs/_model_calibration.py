@@ -1,17 +1,31 @@
 # _model_calibration.py
+
+import os
 import numpy as np
 import json
-import re
-from scipy.stats import beta as beta_dist, norm as norm_dist
+import math
+import csv
+
+from pathlib import Path
+from scipy.stats import beta as beta_dist
 from Bio import SeqIO
 
-from _score_hit import score_blast
-from _species_parser import load_taxonomy
-from _gene_parser import load_glossary
+from bioinf_packages.verify_funcs._score_hit import (
+    score_blast,
+    sigmoid,
+    pident_to_llr,
+    softmax_weights,
+    recommended_subsample_length,
+    recommended_n_samples,
+)
+from bioinf_packages.verify_funcs._species_parser import load_taxonomy
+from bioinf_packages.verify_funcs._gene_parser import load_glossary
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DISTRIBUTION FITTING HELPERS
+# These are kept here for any downstream code that imports them from
+# _model_calibration. They are not used by calibrate_priors() directly.
 # ─────────────────────────────────────────────────────────────────────────────
 
 def fit_beta_safe(data, feature_name):
@@ -81,419 +95,517 @@ def fit_gaussian_safe(data, feature_name):
 # CALIBRATE PRIORS
 # ─────────────────────────────────────────────────────────────────────────────
 
-def calibrate_priors(genuine_blast_results: list,
-                     artefact_blast_results: list,
-                     save_path: str = None) -> dict:
+def calibrate_priors(genuine_fasta: str,
+                     artefact_fasta: str,
+                     taxonomy: dict,
+                     glossary: dict,
+                     output_path: str,
+                     blast_db: str = None,
+                     blast_bin: str = "blastn",
+                     num_threads: int = 4,
+                     evalue: float = 1e-10,
+                     max_target_seqs: int = 20,
+                     perc_identity: float = 70.0,
+                     output_dir: str = None,
+                     insert_fraction: float = 0.30,
+                     target_detection_prob: float = 0.90,
+                     prior_prob_range: tuple = (0.5, 0.6, 0.7,
+                                                0.8, 0.9, 0.95),
+                     pident_threshold_range: tuple = (85.0, 88.0,
+                                                      90.0, 92.0,
+                                                      95.0),
+                     k_range: tuple = (0.1, 0.2, 0.5, 1.0),
+                     beta_range: tuple = (0.01, 0.05, 0.1),
+                     flag_on_single_hit: bool = True,
+                     single_hit_taxon_llr_threshold: float = -2.0) -> dict:
     """
-    Fit empirical likelihood distributions from labelled score_blast()
-    outputs and return calibrated LLR functions for each signal.
+    Calibrate BLAST scoring priors using known genuine and artefactual
+    sequences by sweeping combinations of prior_prob, pident_threshold,
+    k, and beta to find the combination that maximises F1 score.
+
+    Unlike the distance calibration which requires per-gene scaffold
+    files and therefore limits sample size, this function uses all genes
+    from both FASTA files simultaneously — BLAST finds its own hits from
+    the database without needing a pre-built per-gene scaffold.
+
+    The calibration runs BLAST once per sequence with neutral parameters
+    to collect raw hit data (bitscore, pident, taxon LLR, gene LLR),
+    then sweeps aggregation parameter combinations analytically without
+    re-running BLAST. This makes the sweep fast regardless of how many
+    parameter combinations are tested.
+
+    FASTA header formats accepted
+    ------------------------------
+    Genuine  : >Genus_species|gene|orien:+|accession:XXXX
+    Artefact : >Genus_species|gene|mod_N|orien:+|accession:XXXX
 
     Parameters
     ----------
-    genuine_blast_results  : list   score_blast() outputs for genuine seqs
-    artefact_blast_results : list   score_blast() outputs for artefact seqs
-    save_path              : str    optional path to save JSON params
+    genuine_fasta                  : str   known genuine sequences
+    artefact_fasta                 : str   known artefactual sequences
+    taxonomy                       : dict  from load_taxonomy()
+    glossary                       : dict  from load_glossary()
+    output_path                    : str   path to save calibration JSON
+    blast_db                       : str   path to local BLAST database.
+                                           If None, uses remote BLAST via
+                                           verify_seq() — not recommended
+                                           for large calibration sets.
+    blast_bin                      : str   path to blastn executable
+    num_threads                    : int   BLAST CPU threads
+    evalue                         : float BLAST e-value threshold
+    max_target_seqs                : int   max hits per subsample
+    perc_identity                  : float minimum percent identity
+    output_dir                     : str   directory for BLAST XML output
+                                           files. Required if blast_db set.
+    insert_fraction                : float expected chimeric insert fraction
+    target_detection_prob          : float desired P(detect chimera)
+    prior_prob_range               : tuple prior_prob values to sweep
+    pident_threshold_range         : tuple pident_threshold values to sweep
+    k_range                        : tuple k (pident LLR steepness) values
+    beta_range                     : tuple softmax temperature values
+    flag_on_single_hit             : bool  apply single-hit flagging during
+                                           sweep (recommended True)
+    single_hit_taxon_llr_threshold : float taxon LLR below which a single
+                                           subsample triggers chimera flag
 
     Returns
     -------
-    dict with keys:
-        "params"      : fitted distribution parameters per feature
-        "llr_funcs"   : callable LLR functions per feature
-        "prior_prob"  : empirical prior P(genuine)
-        "summary"     : mean/std per feature per class
+    dict with:
+        best_params      : dict   best prior_prob, pident_threshold, k, beta
+        best_f1          : float
+        best_sensitivity : float
+        best_specificity : float
+        sweep_results    : list   all parameter combinations with metrics
+        raw_results      : list   per-sequence score_blast() raw outputs
+        calibration_json : str    path to saved JSON
+        sweep_csv        : str    path to saved sweep CSV
     """
+    if isinstance(taxonomy, str):
+        raise TypeError(
+            "taxonomy must be a dict from load_taxonomy(), not a path."
+        )
 
-    def extract_features(blast_results):
-        features = {
-            "pident":              [],
-            "bitscore":            [],
-            "llr_taxon":           [],
-            "llr_gene":            [],
-            "prop_neg_taxon_hits": [],
-            "taxon_llr_variance":  [],
-        }
-        for result in blast_results:
-            # Hit-level features — one value per hit
-            for hit in result["hit_details"]:
-                if hit.get("gated_out", False):
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
+    # ── Helper: parse FASTA header ────────────────────────────────────────────
+    def parse_header(description: str) -> dict:
+        parts     = description.strip().split("|")
+        taxon     = parts[0].strip()
+        gene      = parts[1].strip() if len(parts) > 1 else None
+        accession = None
+        for p in parts:
+            if p.startswith("accession:"):
+                accession = p.split(":", 1)[1].strip()
+        return {"taxon": taxon, "gene": gene, "accession": accession}
+
+    # ── Step 1: collect raw BLAST scores with neutral parameters ──────────────
+    # Run BLAST once per sequence using neutral priors so we store all
+    # hit-level data. The parameter sweep then operates analytically on
+    # these stored scores without re-running BLAST.
+    print(f"\n{'='*60}")
+    print(f"COLLECTING RAW BLAST SCORES FOR CALIBRATION")
+    print(f"{'='*60}")
+
+    raw_results = []
+
+    for fasta_path, label in [(genuine_fasta,  "GENUINE"),
+                               (artefact_fasta, "ARTEFACT")]:
+        records = list(SeqIO.parse(fasta_path, "fasta"))
+        print(f"\nProcessing {label}: {len(records)} sequences")
+
+        for i, record in enumerate(records, 1):
+            info = parse_header(record.description)
+
+            if not info["gene"] or not info["accession"]:
+                print(f"  [{i}] Skipping — missing gene or accession "
+                      f"in header: {record.description[:60]}")
+                continue
+
+            seq_dir = None
+            if output_dir:
+                seq_dir = os.path.join(
+                    output_dir,
+                    f"{label}_{info['taxon']}_{info['accession']}"
+                )
+
+            print(f"\n  [{i}/{len(records)}] "
+                  f"{info['taxon']} | {info['gene']} | "
+                  f"{info['accession']} [{label}]")
+
+            try:
+                result = score_blast(
+                    query_accession       = info["accession"],
+                    seq                   = str(record.seq),
+                    taxon                 = info["taxon"],
+                    gene                  = info["gene"],
+                    taxonomy              = taxonomy,
+                    glossary              = glossary,
+                    prior_prob            = 0.5,    # neutral
+                    pident_threshold      = 90.0,   # neutral
+                    k                     = 0.2,    # neutral
+                    beta                  = 0.05,   # neutral
+                    insert_fraction       = insert_fraction,
+                    target_detection_prob = target_detection_prob,
+                    blast_db              = blast_db,
+                    blast_bin             = blast_bin,
+                    num_threads           = num_threads,
+                    evalue                = evalue,
+                    max_target_seqs       = max_target_seqs,
+                    perc_identity         = perc_identity,
+                    output_dir            = seq_dir,
+                    flag_on_single_hit    = False,  # collect raw only
+                )
+
+                result["label"]       = label
+                result["is_artefact"] = (label == "ARTEFACT")
+                raw_results.append(result)
+
+                print(f"    ✓ {len(result['sample_results'])} samples | "
+                      f"{len(result['hit_details'])} total hits")
+
+            except Exception as e:
+                print(f"    ✗ Failed: {e}")
+                import traceback
+                traceback.print_exc()
+
+    if not raw_results:
+        raise ValueError("No sequences were successfully scored. "
+                         "Check BLAST database path and input FASTA.")
+
+    genuine_n  = sum(1 for r in raw_results if not r["is_artefact"])
+    artefact_n = sum(1 for r in raw_results if r["is_artefact"])
+    print(f"\nCollected: {genuine_n} genuine, {artefact_n} artefact")
+
+    if genuine_n == 0 or artefact_n == 0:
+        raise ValueError(
+            f"Need both genuine and artefact sequences. "
+            f"Got genuine={genuine_n}, artefact={artefact_n}."
+        )
+
+    # ── Step 2: print feature distribution diagnostics ────────────────────────
+    print(f"\n{'='*60}")
+    print(f"FEATURE DISTRIBUTIONS")
+    print(f"{'='*60}")
+
+    def extract_features(results: list) -> dict:
+        pidents, bitscores, llr_taxons, llr_genes = [], [], [], []
+        prop_negs, taxon_vars = [], []
+        for r in results:
+            for h in r.get("hit_details", []):
+                if h.get("gated_out", False):
                     continue
-                features["pident"].append(hit["pident"] / 100)
-                features["bitscore"].append(hit["bitscore"])
-                features["llr_taxon"].append(hit["llr_taxon"])
-                features["llr_gene"].append(hit["llr_gene"])
+                pidents.append(h.get("pident", 0))
+                bitscores.append(h.get("bitscore", 0))
+                llr_taxons.append(h.get("llr_taxon", 0))
+                llr_genes.append(h.get("llr_gene", 0))
+            prop_negs.append(r.get("prop_neg_taxon_hits", 0.0))
+            taxon_vars.append(r.get("taxon_llr_variance", 0.0))
+        return {
+            "pident":              np.array(pidents),
+            "bitscore":            np.array(bitscores),
+            "llr_taxon":           np.array(llr_taxons),
+            "llr_gene":            np.array(llr_genes),
+            "prop_neg_taxon_hits": np.array(prop_negs),
+            "taxon_llr_variance":  np.array(taxon_vars),
+        }
 
-            # Sequence-level features — one value per sequence
-            features["prop_neg_taxon_hits"].append(
-                result.get("prop_neg_taxon_hits", 0.0)
+    g_feat = extract_features(
+        [r for r in raw_results if not r["is_artefact"]]
+    )
+    a_feat = extract_features(
+        [r for r in raw_results if r["is_artefact"]]
+    )
+
+    print(f"\n{'Feature':<24} {'Class':<10} {'n':<6} {'mean':<8} "
+          f"{'std':<8} {'min':<8} {'max':<8}")
+    print("─" * 76)
+
+    for feature in ["pident", "bitscore", "llr_taxon", "llr_gene",
+                    "prop_neg_taxon_hits", "taxon_llr_variance"]:
+        for lbl, feat in [("genuine", g_feat), ("artefact", a_feat)]:
+            d = feat[feature]
+            if len(d) == 0:
+                print(f"{feature:<24} {lbl:<10} NO DATA")
+            else:
+                print(f"{feature:<24} {lbl:<10} {len(d):<6} "
+                      f"{np.mean(d):<8.3f} {np.std(d):<8.3f} "
+                      f"{np.min(d):<8.3f} {np.max(d):<8.3f}")
+        print()
+
+    # ── Step 3: sweep parameter combinations analytically ─────────────────────
+    print(f"\n{'='*60}")
+    print(f"SWEEPING PARAMETER COMBINATIONS")
+    print(f"{'='*60}")
+
+    total_combos = (len(prior_prob_range) *
+                    len(pident_threshold_range) *
+                    len(k_range) *
+                    len(beta_range))
+    print(f"Total combinations to sweep: {total_combos}")
+
+    best_f1          = -1.0
+    best_params      = {}
+    best_sensitivity = 0.0
+    best_specificity = 0.0
+    sweep_results    = []
+
+    for prior in prior_prob_range:
+        for pident_thresh in pident_threshold_range:
+            for k in k_range:
+                for beta in beta_range:
+
+                    tp = tn = fp = fn = 0
+
+                    for seq_result in raw_results:
+
+                        prior_log_odds      = math.log(
+                            prior / (1 - prior)
+                        )
+                        cumulative_log_odds = prior_log_odds
+                        any_single_hit_flag = False
+                        sample_posts        = []
+                        all_taxon_llrs      = []
+
+                        for sample in seq_result.get("sample_results",
+                                                     []):
+                            hit_details = sample.get("hit_details", [])
+                            if not hit_details:
+                                continue
+
+                            bitscores = [h["bitscore"]
+                                         for h in hit_details]
+                            weights   = softmax_weights(bitscores,
+                                                        beta=beta)
+
+                            sample_llr   = 0.0
+                            top_llr      = None
+                            top_bitscore = -1
+                            s_log_odds   = math.log(prior / (1 - prior))
+
+                            for h, w in zip(hit_details, weights):
+                                llr_pident = pident_to_llr(
+                                    h["pident"],
+                                    threshold=pident_thresh,
+                                    k=k
+                                )
+                                llr_taxon = h["llr_taxon"]
+                                llr_gene  = h["llr_gene"]
+                                combined  = w * (llr_taxon
+                                                 + llr_gene
+                                                 + llr_pident)
+                                sample_llr += combined
+                                s_log_odds += (llr_taxon
+                                               + llr_gene
+                                               + llr_pident)
+
+                                all_taxon_llrs.append(llr_taxon)
+
+                                if h["bitscore"] > top_bitscore:
+                                    top_bitscore = h["bitscore"]
+                                    top_llr      = llr_taxon
+
+                            cumulative_log_odds += sample_llr
+                            sample_posts.append(sigmoid(s_log_odds))
+
+                            # Single-hit check
+                            if (flag_on_single_hit
+                                    and top_llr is not None
+                                    and top_llr 
+                                    single_hit_taxon_llr_threshold):
+                                any_single_hit_flag = True
+
+                        # Aggregate chimera flag
+                        post_var = (float(np.var(sample_posts))
+                                    if len(sample_posts) > 1 else 0.0)
+                        llr_var  = (float(np.var(all_taxon_llrs))
+                                    if len(all_taxon_llrs) > 1
+                                    else 0.0)
+
+                        agg_flag          = (post_var > 0.05
+                                             or llr_var > 2.0)
+                        predicted_chimera = (agg_flag
+                                             or any_single_hit_flag)
+                        actual_chimera    = seq_result["is_artefact"]
+
+                        if predicted_chimera and actual_chimera:
+                            tp += 1
+                        elif not predicted_chimera and not actual_chimera:
+                            tn += 1
+                        elif predicted_chimera and not actual_chimera:
+                            fp += 1
+                        else:
+                            fn += 1
+
+                    sensitivity = (tp / (tp + fn)
+                                   if (tp + fn) > 0 else 0.0)
+                    specificity = (tn / (tn + fp)
+                                   if (tn + fp) > 0 else 0.0)
+                    precision   = (tp / (tp + fp)
+                                   if (tp + fp) > 0 else 0.0)
+                    f1          = (2 * precision * sensitivity
+                                   / (precision + sensitivity)
+                                   if (precision + sensitivity) > 0
+                                   else 0.0)
+
+                    combo = {
+                        "prior_prob":       prior,
+                        "pident_threshold": pident_thresh,
+                        "k":                k,
+                        "beta":             beta,
+                        "tp":               tp,
+                        "tn":               tn,
+                        "fp":               fp,
+                        "fn":               fn,
+                        "sensitivity":      round(sensitivity, 4),
+                        "specificity":      round(specificity, 4),
+                        "precision":        round(precision, 4),
+                        "f1":               round(f1, 4),
+                    }
+                    sweep_results.append(combo)
+
+                    # Prefer higher F1; break ties by higher specificity
+                    if (f1 > best_f1
+                            or (f1 == best_f1
+                                and specificity > best_specificity)):
+                        best_f1          = f1
+                        best_sensitivity = sensitivity
+                        best_specificity = specificity
+                        best_params      = {
+                            "prior_prob":       prior,
+                            "pident_threshold": pident_thresh,
+                            "k":                k,
+                            "beta":             beta,
+                        }
+
+    # ── Step 4: save results ──────────────────────────────────────────────────
+    calibration_out = {
+        "best_params":                  best_params,
+        "best_f1":                      round(best_f1, 4),
+        "best_sensitivity":             round(best_sensitivity, 4),
+        "best_specificity":             round(best_specificity, 4),
+        "n_genuine":                    genuine_n,
+        "n_artefact":                   artefact_n,
+        "flag_on_single_hit":           flag_on_single_hit,
+        "single_hit_taxon_llr_threshold": single_hit_taxon_llr_threshold,
+    }
+
+    with open(output_path, "w") as f:
+        json.dump(calibration_out, f, indent=2)
+
+    sweep_csv = output_path.replace(".json", "_sweep.csv")
+    if sweep_results:
+        with open(sweep_csv, "w", newline="") as f:
+            writer = csv.DictWriter(
+                f, fieldnames=list(sweep_results[0].keys())
             )
-            features["taxon_llr_variance"].append(
-                result.get("taxon_llr_variance", 0.0)
-            )
+            writer.writeheader()
+            writer.writerows(sweep_results)
 
-        return {k: np.array(v) for k, v in features.items()}
-
-    genuine_features  = extract_features(genuine_blast_results)
-    artefact_features = extract_features(artefact_blast_results)
-
-    # ── Empirical prior ───────────────────────────────────────────────────────
-    n_genuine  = len(genuine_blast_results)
-    n_artefact = len(artefact_blast_results)
-
-    if n_genuine + n_artefact == 0:
-        raise ValueError("Both result lists are empty — cannot calibrate.")
-
-    prior_prob = n_genuine / (n_genuine + n_artefact)
-    print(f"Genuine sequences:  {n_genuine}")
-    print(f"Artefact sequences: {n_artefact}")
-    print(f"Empirical prior P(genuine): {prior_prob:.3f}")
-
-    params    = {}
-    llr_funcs = {}
-    summary   = {}
-
-    def clip_beta(arr):
-        return np.clip(arr, 1e-6, 1 - 1e-6)
-
-    # ── pident (Beta) ─────────────────────────────────────────────────────────
-    g_pident = clip_beta(genuine_features["pident"])
-    a_pident = clip_beta(artefact_features["pident"])
-
-    ag, bg = fit_beta_safe(g_pident, "pident (genuine)")
-    aa, ba = fit_beta_safe(a_pident, "pident (artefact)")
-
-    params["pident"] = {"genuine":  {"a": ag, "b": bg},
-                        "artefact": {"a": aa, "b": ba}}
-
-    def llr_pident(pident_raw):
-        x = np.clip(pident_raw / 100, 1e-6, 1 - 1e-6)
-        return float(np.log(beta_dist.pdf(x, ag, bg) /
-                            beta_dist.pdf(x, aa, ba)))
-
-    llr_funcs["pident"] = llr_pident
-
-    summary["pident"] = {
-        "genuine_mean":  float(np.mean(genuine_features["pident"]) * 100),
-        "genuine_std":   float(np.std(genuine_features["pident"])  * 100),
-        "artefact_mean": float(np.mean(artefact_features["pident"]) * 100),
-        "artefact_std":  float(np.std(artefact_features["pident"])  * 100),
-    }
-
-    # ── bitscore (Beta) ───────────────────────────────────────────────────────
-    all_bitscores = np.concatenate([genuine_features["bitscore"],
-                                    artefact_features["bitscore"]])
-    bitscore_max  = float(np.max(all_bitscores))
-
-    g_bits = clip_beta(genuine_features["bitscore"]  / bitscore_max)
-    a_bits = clip_beta(artefact_features["bitscore"] / bitscore_max)
-
-    agb, bgb = fit_beta_safe(g_bits, "bitscore (genuine)")
-    aab, bab = fit_beta_safe(a_bits, "bitscore (artefact)")
-
-    params["bitscore"] = {"genuine":      {"a": agb, "b": bgb},
-                          "artefact":     {"a": aab, "b": bab},
-                          "max_observed": bitscore_max}
-
-    def llr_bitscore(bitscore_raw):
-        x = np.clip(bitscore_raw / bitscore_max, 1e-6, 1 - 1e-6)
-        return float(np.log(beta_dist.pdf(x, agb, bgb) /
-                            beta_dist.pdf(x, aab, bab)))
-
-    llr_funcs["bitscore"] = llr_bitscore
-
-    summary["bitscore"] = {
-        "genuine_mean":  float(np.mean(genuine_features["bitscore"])),
-        "genuine_std":   float(np.std(genuine_features["bitscore"])),
-        "artefact_mean": float(np.mean(artefact_features["bitscore"])),
-        "artefact_std":  float(np.std(artefact_features["bitscore"])),
-    }
-
-    # ── llr_taxon (Gaussian) ──────────────────────────────────────────────────
-    mg,  sg  = fit_gaussian_safe(genuine_features["llr_taxon"],
-                                  "llr_taxon (genuine)")
-    ma,  sa  = fit_gaussian_safe(artefact_features["llr_taxon"],
-                                  "llr_taxon (artefact)")
-
-    params["llr_taxon"] = {"genuine":  {"mean": mg, "std": sg},
-                           "artefact": {"mean": ma, "std": sa}}
-
-    def llr_taxon_func(llr_taxon_val):
-        g_pdf = norm_dist.pdf(llr_taxon_val, mg, sg)
-        a_pdf = norm_dist.pdf(llr_taxon_val, ma, sa)
-        if a_pdf == 0:
-            return 10.0
-        return float(np.log(g_pdf / a_pdf))
-
-    llr_funcs["llr_taxon"] = llr_taxon_func
-
-    summary["llr_taxon"] = {
-        "genuine_mean":  mg,  "genuine_std":  sg,
-        "artefact_mean": ma,  "artefact_std": sa,
-    }
-
-    # ── llr_gene (Gaussian) ───────────────────────────────────────────────────
-    mg2, sg2 = fit_gaussian_safe(genuine_features["llr_gene"],
-                                  "llr_gene (genuine)")
-    ma2, sa2 = fit_gaussian_safe(artefact_features["llr_gene"],
-                                  "llr_gene (artefact)")
-
-    params["llr_gene"] = {"genuine":  {"mean": mg2, "std": sg2},
-                          "artefact": {"mean": ma2, "std": sa2}}
-
-    def llr_gene_func(llr_gene_val):
-        g_pdf = norm_dist.pdf(llr_gene_val, mg2, sg2)
-        a_pdf = norm_dist.pdf(llr_gene_val, ma2, sa2)
-        if a_pdf == 0:
-            return 10.0
-        return float(np.log(g_pdf / a_pdf))
-
-    llr_funcs["llr_gene"] = llr_gene_func
-
-    summary["llr_gene"] = {
-        "genuine_mean":  mg2,  "genuine_std":  sg2,
-        "artefact_mean": ma2,  "artefact_std": sa2,
-    }
-
-    # ── prop_neg_taxon_hits (Beta — sequence level) ───────────────────────────
-    g_prop = clip_beta(genuine_features["prop_neg_taxon_hits"])
-    a_prop = clip_beta(artefact_features["prop_neg_taxon_hits"])
-
-    agp, bgp = fit_beta_safe(g_prop, "prop_neg_taxon (genuine)")
-    aap, bap = fit_beta_safe(a_prop, "prop_neg_taxon (artefact)")
-
-    params["prop_neg_taxon_hits"] = {
-        "genuine":  {"a": agp, "b": bgp},
-        "artefact": {"a": aap, "b": bap},
-    }
-
-    def llr_prop_neg_taxon(prop):
-        x = np.clip(prop, 1e-6, 1 - 1e-6)
-        return float(np.log(beta_dist.pdf(x, agp, bgp) /
-                            beta_dist.pdf(x, aap, bap)))
-
-    llr_funcs["prop_neg_taxon_hits"] = llr_prop_neg_taxon
-
-    summary["prop_neg_taxon_hits"] = {
-        "genuine_mean":  float(np.mean(genuine_features["prop_neg_taxon_hits"])),
-        "genuine_std":   float(np.std(genuine_features["prop_neg_taxon_hits"])),
-        "artefact_mean": float(np.mean(artefact_features["prop_neg_taxon_hits"])),
-        "artefact_std":  float(np.std(artefact_features["prop_neg_taxon_hits"])),
-    }
-
-    # ── taxon_llr_variance (Gaussian — sequence level) ────────────────────────
-    mg3, sg3 = fit_gaussian_safe(genuine_features["taxon_llr_variance"],
-                                  "taxon_llr_variance (genuine)")
-    ma3, sa3 = fit_gaussian_safe(artefact_features["taxon_llr_variance"],
-                                  "taxon_llr_variance (artefact)")
-
-    params["taxon_llr_variance"] = {"genuine":  {"mean": mg3, "std": sg3},
-                                    "artefact": {"mean": ma3, "std": sa3}}
-
-    def llr_taxon_variance_func(var_val):
-        g_pdf = norm_dist.pdf(var_val, mg3, sg3)
-        a_pdf = norm_dist.pdf(var_val, ma3, sa3)
-        if a_pdf == 0:
-            return 10.0
-        return float(np.log(g_pdf / a_pdf))
-
-    llr_funcs["taxon_llr_variance"] = llr_taxon_variance_func
-
-    summary["taxon_llr_variance"] = {
-        "genuine_mean":  mg3,  "genuine_std":  sg3,
-        "artefact_mean": ma3,  "artefact_std": sa3,
-    }
-
-    # ── Save to JSON ──────────────────────────────────────────────────────────
-    if save_path:
-        with open(save_path, "w") as f:
-            json.dump({"params": params, "prior_prob": prior_prob,
-                       "summary": summary}, f, indent=2)
-        print(f"\nCalibration parameters saved to {save_path}")
-
-    # ── Print summary ─────────────────────────────────────────────────────────
-    print("\n── Calibration summary ──────────────────────────────────────")
-    for feature, stats in summary.items():
-        print(f"\n{feature}:")
-        print(f"  Genuine:  mean={stats['genuine_mean']:.3f}  "
-              f"std={stats['genuine_std']:.3f}")
-        print(f"  Artefact: mean={stats['artefact_mean']:.3f}  "
-              f"std={stats['artefact_std']:.3f}")
+    # ── Step 5: print summary ─────────────────────────────────────────────────
+    print(f"\n{'='*60}")
+    print(f"CALIBRATION COMPLETE")
+    print(f"{'='*60}")
+    print(f"  Genuine sequences   : {genuine_n}")
+    print(f"  Artefact sequences  : {artefact_n}")
+    print(f"  Best parameters     :")
+    for pname, pval in best_params.items():
+        print(f"    {pname:<22} : {pval}")
+    print(f"  Best F1             : {best_f1:.4f}")
+    print(f"  Best sensitivity    : {best_sensitivity:.4f}")
+    print(f"  Best specificity    : {best_specificity:.4f}")
+    print(f"\n  JSON saved          : {output_path}")
+    print(f"  Sweep CSV saved     : {sweep_csv}")
+    print(f"\n  Use these in score_blast():")
+    print(f"    score_blast(")
+    for pname, pval in best_params.items():
+        print(f"        {pname:<22} = {pval},")
+    print(f"    )")
 
     return {
-        "params":     params,
-        "llr_funcs":  llr_funcs,
-        "prior_prob": prior_prob,
-        "summary":    summary,
+        "best_params":      best_params,
+        "best_f1":          round(best_f1, 4),
+        "best_sensitivity": round(best_sensitivity, 4),
+        "best_specificity": round(best_specificity, 4),
+        "sweep_results":    sweep_results,
+        "raw_results":      raw_results,
+        "calibration_json": output_path,
+        "sweep_csv":        sweep_csv,
     }
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RUN CALIBRATION
+# RUN CALIBRATION  (convenience wrapper)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def run_calibration(genuine_fasta: str,
                     artefact_fasta: str,
                     taxonomy: dict,
                     glossary: dict,
-                    save_path: str = None,
-                    prior_prob: float = 0.95,
-                    pident_threshold: float = 97.0,
-                    k: float = 0.3,
-                    beta: float = 0.01,
+                    output_path: str,
+                    blast_db: str,
+                    blast_bin: str = "blastn",
+                    num_threads: int = 4,
+                    evalue: float = 1e-10,
+                    max_target_seqs: int = 20,
+                    perc_identity: float = 70.0,
+                    output_dir: str = None,
                     insert_fraction: float = 0.30,
-                    target_detection_prob: float = 0.90) -> dict:
+                    target_detection_prob: float = 0.90,
+                    flag_on_single_hit: bool = True,
+                    single_hit_taxon_llr_threshold: float = -2.0) -> dict:
     """
-    Parse two labelled FASTA files, run score_blast() on every sequence,
-    diagnose feature distributions, and pass results to calibrate_priors().
+    Convenience wrapper around calibrate_priors() with sensible defaults.
 
-    Note: subsample length (n) and number of samples are now calculated
-    automatically inside score_blast() based on sequence length, so they
-    are no longer parameters here.
-
-    FASTA header format (pipe-delimited):
-        >Species_name|gene_symbol|orien:+/-|accession:XXXXXXX
+    Runs the full calibration pipeline:
+      1. BLAST all genuine and artefact sequences (once, with neutral
+         parameters)
+      2. Print feature distribution diagnostics
+      3. Sweep parameter combinations analytically
+      4. Save best parameters to JSON
 
     Parameters
     ----------
-    genuine_fasta         : str    path to FASTA of confirmed genuine seqs
-    artefact_fasta        : str    path to FASTA of confirmed artefact seqs
-    taxonomy              : dict   from load_taxonomy()
-    glossary              : dict   from load_glossary()
-    save_path             : str    optional path to save calibration JSON
-    prior_prob            : float  prior P(genuine) passed to score_blast()
-    pident_threshold      : float  pident threshold passed to score_blast()
-    k                     : float  pident LLR steepness
-    beta                  : float  softmax temperature
-    insert_fraction       : float  expected insert fraction for n_samples
-                                   calculation (default 0.30)
-    target_detection_prob : float  desired P(detect chimera) (default 0.90)
+    genuine_fasta                  : str   known genuine sequences FASTA
+    artefact_fasta                 : str   known artefactual sequences FASTA
+    taxonomy                       : dict  from load_taxonomy()
+    glossary                       : dict  from load_glossary()
+    output_path                    : str   path to save calibration JSON
+    blast_db                       : str   path to local BLAST database
+    blast_bin                      : str   path to blastn executable
+    num_threads                    : int   BLAST CPU threads
+    evalue                         : float BLAST e-value threshold
+    max_target_seqs                : int   max hits per subsample
+    perc_identity                  : float minimum percent identity
+    output_dir                     : str   directory for BLAST XML outputs
+    insert_fraction                : float expected chimeric insert fraction
+    target_detection_prob          : float desired P(detect chimera)
+    flag_on_single_hit             : bool  apply single-hit flagging
+    single_hit_taxon_llr_threshold : float single-hit taxon LLR threshold
 
     Returns
     -------
     dict   output of calibrate_priors()
     """
-
-    def parse_header(header: str) -> dict:
-        """
-        Parse a pipe-delimited FASTA header into its components.
-        '>Talpa_europaea|12S_rRNA|orien:+|accession:NC_002391'
-        """
-        parts     = header.strip().split("|")
-        species   = parts[0].strip()
-        gene      = parts[1].strip() if len(parts) > 1 else None
-        accession = None
-        for part in parts:
-            if part.startswith("accession:"):
-                accession = part.split(":", 1)[1].strip()
-                break
-        return {"species": species, "gene": gene, "accession": accession}
-
-    def process_fasta(fasta_path: str, label: str) -> list:
-        """
-        Run score_blast() on every record in a FASTA file.
-        Returns a list of score_blast() output dicts.
-        """
-        results = []
-        records = list(SeqIO.parse(fasta_path, "fasta"))
-        total   = len(records)
-
-        print(f"\nProcessing {label} set: {total} sequences from {fasta_path}")
-
-        for i, record in enumerate(records, 1):
-            meta      = parse_header(record.description)
-            species   = meta["species"]
-            gene      = meta["gene"]
-            accession = meta["accession"]
-            seq       = str(record.seq)
-
-            print(f"  [{i}/{total}] {species} | {gene} | {accession}")
-
-            try:
-                result = score_blast(
-                    query_accession      = accession,
-                    seq                  = seq,
-                    taxon                = species,
-                    gene                 = gene,
-                    taxonomy             = taxonomy,
-                    glossary             = glossary,
-                    prior_prob           = prior_prob,
-                    pident_threshold     = pident_threshold,
-                    k                    = k,
-                    beta                 = beta,
-                    insert_fraction      = insert_fraction,
-                    target_detection_prob= target_detection_prob,
-                )
-                result["_meta"] = meta
-                results.append(result)
-
-            except Exception as e:
-                print(f"    ✗ Failed: {e} — skipping")
-                import traceback
-                traceback.print_exc()
-
-        print(f"  Done: {len(results)}/{total} succeeded")
-        return results
-
-    def diagnose_calibration_data(genuine_results: list,
-                                  artefact_results: list):
-        """Print feature distribution summary before fitting."""
-
-        def extract(results):
-            pidents, bitscores, llr_taxons, llr_genes = [], [], [], []
-            prop_negs, taxon_vars = [], []
-            for r in results:
-                for h in r["hit_details"]:
-                    if h.get("gated_out", False):
-                        continue
-                    pidents.append(h["pident"])
-                    bitscores.append(h["bitscore"])
-                    llr_taxons.append(h["llr_taxon"])
-                    llr_genes.append(h["llr_gene"])
-                prop_negs.append(r.get("prop_neg_taxon_hits", 0.0))
-                taxon_vars.append(r.get("taxon_llr_variance", 0.0))
-            return {
-                "pident":              np.array(pidents),
-                "bitscore":            np.array(bitscores),
-                "llr_taxon":           np.array(llr_taxons),
-                "llr_gene":            np.array(llr_genes),
-                "prop_neg_taxon_hits": np.array(prop_negs),
-                "taxon_llr_variance":  np.array(taxon_vars),
-            }
-
-        g = extract(genuine_results)
-        a = extract(artefact_results)
-
-        print(f"\n{'Feature':<24} {'Class':<10} {'n':<6} {'mean':<8} "
-              f"{'std':<8} {'min':<8} {'max':<8}")
-        print("─" * 76)
-
-        features = ["pident", "bitscore", "llr_taxon", "llr_gene",
-                    "prop_neg_taxon_hits", "taxon_llr_variance"]
-
-        for feature in features:
-            for label, data in [("genuine", g[feature]),
-                                 ("artefact", a[feature])]:
-                if len(data) == 0:
-                    print(f"{feature:<24} {label:<10} NO DATA")
-                    continue
-                print(f"{feature:<24} {label:<10} {len(data):<6} "
-                      f"{np.mean(data):<8.3f} {np.std(data):<8.3f} "
-                      f"{np.min(data):<8.3f} {np.max(data):<8.3f}")
-            print()
-
-    # ── Run both sets ─────────────────────────────────────────────────────────
-    genuine_results  = process_fasta(genuine_fasta,  label="genuine")
-    artefact_results = process_fasta(artefact_fasta, label="artefact")
-
-    # ── Diagnose before calibrating ───────────────────────────────────────────
-    print("\nDiagnosing feature distributions...")
-    diagnose_calibration_data(genuine_results, artefact_results)
-
-    # ── Calibrate ─────────────────────────────────────────────────────────────
-    calibration = calibrate_priors(genuine_results, artefact_results,
-                                   save_path=save_path)
-
-    return calibration
-
+    return calibrate_priors(
+        genuine_fasta                  = genuine_fasta,
+        artefact_fasta                 = artefact_fasta,
+        taxonomy                       = taxonomy,
+        glossary                       = glossary,
+        output_path                    = output_path,
+        blast_db                       = blast_db,
+        blast_bin                      = blast_bin,
+        num_threads                    = num_threads,
+        evalue                         = evalue,
+        max_target_seqs                = max_target_seqs,
+        perc_identity                  = perc_identity,
+        output_dir                     = output_dir,
+        insert_fraction                = insert_fraction,
+        target_detection_prob          = target_detection_prob,
+        flag_on_single_hit             = flag_on_single_hit,
+        single_hit_taxon_llr_threshold = single_hit_taxon_llr_threshold,
+    )
 
 
 
@@ -503,11 +615,14 @@ taxonomy = load_taxonomy("C:/Users/ojmin/OneDrive/Documents/UNI/Python_Packages/
 glossary = load_glossary("C:/Users/ojmin/OneDrive/Documents/UNI/Python_Packages/src/bioinf_packages/dictionary_funcs/glossary.csv")
 
 
-#run callibration
-calibration = run_calibration(
-    genuine_fasta  = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/gold_seq/goldset_seqs.fasta",
-    artefact_fasta = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_seq/modifed_seqs.fasta",
+print(run_calibration(
+    genuine_fasta  = "gold_set/genuine_sequences.fasta",
+    artefact_fasta = "gold_set/artefact_sequences.fasta",
     taxonomy       = taxonomy,
     glossary       = glossary,
-    save_path      = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/callibration/callibration.json",
-)
+    output_path    = "calibration_output/blast_priors.json",
+    blast_db       = "C:/blast/db/core_nt",
+    blast_bin      = "C:/blast/bin/blastn.exe",
+    num_threads    = 8,
+    output_dir     = "calibration_output/blast_runs",
+))

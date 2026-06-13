@@ -234,46 +234,119 @@ def recommended_n_samples(seq_length: int,
 # TOP-LEVEL SCORER
 # ─────────────────────────────────────────────────────────────────────────────
 
-def score_blast(query_accession, seq: str, taxon: str, gene: str,
-                taxonomy, glossary, prior_prob, pident_threshold, k, beta,
+def score_blast(query_accession: str,
+                seq: str,
+                taxon: str,
+                gene: str,
+                taxonomy: dict,
+                glossary: dict,
+                prior_prob: float,
+                pident_threshold: float,
+                k: float,
+                beta: float,
                 n: int = None,
                 insert_fraction: float = 0.30,
-                target_detection_prob: float = 0.90) -> dict:
+                target_detection_prob: float = 0.90,
+                blast_db: str = None,
+                blast_bin: str = "blastn",
+                num_threads: int = 4,
+                evalue: float = 1e-10,
+                max_target_seqs: int = 20,
+                perc_identity: float = 70.0,
+                output_dir: str = None,
+                flag_on_single_hit: bool = True,
+                single_hit_taxon_llr_threshold: float = -2.0) -> dict:
     """
-    Run verify_seq() with automatically scaled subsample length and number
-    of samples based on sequence length and expected insert size, then
-    score all hits and return an aggregated posterior.
+    Run BLAST across subsamples of a query sequence, score all hits,
+    and return an aggregated posterior probability of genuineness.
+
+    With flag_on_single_hit=True (default), a single subsample whose
+    top hit has a taxon LLR below single_hit_taxon_llr_threshold flags
+    the entire sequence as a chimera candidate regardless of the
+    aggregate posterior. This matches the subsampling design which gives
+    90% probability that at least one subsample overlaps a chimeric
+    junction — so a single clearly wrong taxonomic hit is meaningful
+    signal.
+
+    Supports both local BLAST (blast_db + blast_bin) and the legacy
+    verify_seq() remote BLAST path. If blast_db is provided, local
+    BLAST is used. Otherwise falls back to verify_seq().
 
     Parameters
     ----------
-    query_accession      : str    accession of the query (for self-hit removal)
-    seq                  : str    full query sequence
-    taxon                : str    e.g. "Sorex_araneus"
-    gene                 : str    e.g. "CYTB" or "CYTB_modified_1"
-    taxonomy             : dict   from load_taxonomy()
-    glossary             : dict   from load_glossary()
-    prior_prob           : float  prior P(genuine)
-    pident_threshold     : float  pident value contributing LLR of 0
-    k                    : float  steepness of pident LLR mapping
-    beta                 : float  softmax temperature over bitscores
-    n                    : int    subsample length — if None, calculated
-                                  automatically from sequence length
-    insert_fraction      : float  expected insert size as fraction of
-                                  sequence length (default 0.30)
-    target_detection_prob: float  desired P(detect chimera) (default 0.90)
+    query_accession                : str   accession for self-hit removal
+    seq                            : str   full query sequence
+    taxon                          : str   e.g. "Sorex_araneus"
+    gene                           : str   e.g. "CYTB" or "CYTB_modified_1"
+    taxonomy                       : dict  from load_taxonomy()
+    glossary                       : dict  from load_glossary()
+    prior_prob                     : float prior P(genuine)
+    pident_threshold               : float pident contributing LLR of 0
+    k                              : float steepness of pident LLR mapping
+    beta                           : float softmax temperature over bitscores
+    n                              : int   subsample length. If None,
+                                           calculated automatically.
+    insert_fraction                : float expected insert size as fraction
+                                           of sequence length (default 0.30)
+    target_detection_prob          : float desired P(detect chimera)
+                                           (default 0.90)
+    blast_db                       : str   path to local BLAST database.
+                                           If None, uses remote verify_seq().
+    blast_bin                      : str   path to blastn executable
+    num_threads                    : int   BLAST CPU threads
+    evalue                         : float BLAST e-value threshold
+    max_target_seqs                : int   max hits per subsample
+    perc_identity                  : float minimum percent identity
+    output_dir                     : str   directory for BLAST output files.
+                                           Required when blast_db is set.
+    flag_on_single_hit             : bool  if True, any subsample with
+                                           taxon_llr below threshold flags
+                                           whole sequence (default True)
+    single_hit_taxon_llr_threshold : float taxon LLR below which a single
+                                           subsample triggers chimera flag.
+                                           Default -2.0.
 
     Returns
     -------
-    dict with posterior probability, chimera indicators, and full
-    per-sample and per-hit breakdowns
+    dict with:
+        query_accession         : str
+        taxon                   : str
+        gene                    : str
+        seq_length              : int
+        subsample_length        : int
+        n_samples               : int
+        sample_results          : list  per-sample aggregated scores
+        sample_posteriors       : list  per-sample posterior probabilities
+        posterior_variance      : float variance across sample posteriors
+        taxon_llr_variance      : float variance of taxon LLRs across hits
+        prop_neg_taxon_hits     : float fraction of hits with negative LLR
+        chimera_flag            : bool  True if aggregate OR single-hit
+                                        flag triggered
+        single_hit_flag         : bool  True if any single subsample
+                                        triggered the flag
+        n_flagged_samples       : int   number of subsamples flagged
+        flagged_sample_indices  : list  which sample numbers were flagged
+        flagged_sample_details  : list  dicts with position and top hit
+                                        for each flagged subsample
+        cumulative_log_odds     : float
+        final_posterior         : float
+        prior_prob              : float
+        prior_log_odds          : float
+        total_llr               : float
+        posterior_log_odds      : float
+        posterior_prob          : float
+        hit_details             : list  all hit dicts across all samples
     """
-    # ── Strip _modified_N suffix so gene parser can resolve the gene name ─────
+    import tempfile
+
+    # ── Strip _modified_N suffix for gene parser ──────────────────────────────
     clean_gene = re.sub(r'_modified(_\d+)?$', '', gene)
 
-    # ── Auto-scale subsample length and n_samples ─────────────────────────────
+    # ── Auto-scale subsample parameters ──────────────────────────────────────
     if n is None:
-        n = recommended_subsample_length(len(seq),
-                                         insert_fraction=insert_fraction)
+        n = recommended_subsample_length(
+            len(seq), insert_fraction=insert_fraction
+        )
 
     n_samples = recommended_n_samples(
         seq_length            = len(seq),
@@ -283,12 +356,72 @@ def score_blast(query_accession, seq: str, taxon: str, gene: str,
     )
 
     print(f"  Sequence: {len(seq)}bp | "
-          f"Subsample: {n}bp | "
-          f"Samples: {n_samples}")
+          f"Subsample: {n}bp | Samples: {n_samples}")
 
-    # ── Run BLAST across all subsamples ───────────────────────────────────────
-    blast_result = verify_seq(seq, n, query_accession,
-                              n_samples=n_samples)
+    # ── Run BLAST — local or remote ───────────────────────────────────────────
+    if blast_db is not None:
+        # Local BLAST via blastn subprocess
+        if output_dir is None:
+            raise ValueError(
+                "output_dir must be provided when using local BLAST "
+                "(blast_db is set)."
+            )
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Draw subsamples and write to FASTA
+        import random
+        from Bio.SeqRecord import SeqRecord
+        from Bio.Seq import Seq as BioSeq
+
+        subsamples  = []
+        sample_meta = []
+        for i in range(1, n_samples + 1):
+            start  = random.randint(0, len(seq) - n)
+            sample = seq[start:start + n]
+            header = (f"{taxon}|{clean_gene}|accession:{query_accession}"
+                      f"|Sample{i}")
+            subsamples.append(
+                SeqRecord(BioSeq(sample), id=header, description="")
+            )
+            sample_meta.append({
+                "sample_index": i - 1,
+                "sample":       i,
+                "query_start":  start,
+                "query_end":    start + n,
+            })
+
+        query_fasta = os.path.join(
+            output_dir,
+            f"{taxon}_{query_accession}_subsamples.fasta"
+        )
+        SeqIO.write(subsamples, query_fasta, "fasta")
+
+        blast_out = os.path.join(
+            output_dir,
+            f"{taxon}_{query_accession}_blast.xml"
+        )
+        run_blast_local(
+            query_fasta     = query_fasta,
+            db              = blast_db,
+            out_file        = blast_out,
+            blast_bin       = blast_bin,
+            evalue          = evalue,
+            max_target_seqs = max_target_seqs,
+            num_threads     = num_threads,
+            perc_identity   = perc_identity,
+        )
+
+        # Parse XML results into the same format as verify_seq()
+        blast_result = _parse_blast_xml_to_samples(
+            blast_xml    = blast_out,
+            sample_meta  = sample_meta,
+            accession    = query_accession,
+        )
+
+    else:
+        # Legacy remote BLAST via verify_seq()
+        blast_result = verify_seq(seq, n, query_accession,
+                                   n_samples=n_samples)
 
     # ── Score each sample independently ──────────────────────────────────────
     sample_results    = []
@@ -309,19 +442,38 @@ def score_blast(query_accession, seq: str, taxon: str, gene: str,
             scored_hits, prior_prob, pident_threshold, k, beta
         )
         sample_agg["sample_index"] = sample["sample_index"]
-        sample_agg["query_start"]  = sample["query_start"]
+        sample_agg["query_start"]  = sample.get("query_start", None)
+        sample_agg["query_end"]    = sample.get("query_end", None)
+        sample_agg["sample"]       = sample["sample_index"] + 1
+
+        # Store top hit taxon LLR for single-hit flagging
+        if scored_hits:
+            top_hit = max(scored_hits, key=lambda h: h["bitscore"])
+            sample_agg["top_taxon_llr"]   = top_hit["species_llr"]
+            sample_agg["top_taxon"]        = (
+                top_hit["species_result"].get("matched_taxon", "unknown")
+            )
+            sample_agg["top_gene_llr"]    = top_hit["gene_llr"]
+            sample_agg["top_accession"]   = top_hit["accession"]
+        else:
+            sample_agg["top_taxon_llr"]  = None
+            sample_agg["top_taxon"]       = None
+            sample_agg["top_gene_llr"]   = None
+            sample_agg["top_accession"]  = None
 
         sample_posteriors.append(sample_agg["posterior_prob"])
         sample_results.append(sample_agg)
 
     if not sample_results:
-        raise ValueError("No samples returned any BLAST hits.")
+        raise ValueError(
+            f"No samples returned any BLAST hits for "
+            f"{taxon} | {gene} | {query_accession}."
+        )
 
-    # ── Aggregate log-odds across samples ─────────────────────────────────────
+    # ── Aggregate log-odds across all samples ─────────────────────────────────
     # Prior applied once. Each sample contributes an independent LLR update.
     prior_log_odds      = math.log(prior_prob / (1 - prior_prob))
     cumulative_log_odds = prior_log_odds
-
     for s in sample_results:
         cumulative_log_odds += s["total_llr"]
 
@@ -335,38 +487,151 @@ def score_blast(query_accession, seq: str, taxon: str, gene: str,
         if not h.get("gated_out", False)
     ]
 
-    posterior_variance = float(np.var(sample_posteriors)) \
-                         if len(sample_posteriors) > 1 else 0.0
-    taxon_llr_variance = float(np.var(all_taxon_llrs)) \
-                         if len(all_taxon_llrs) > 1 else 0.0
+    posterior_variance = (float(np.var(sample_posteriors))
+                          if len(sample_posteriors) > 1 else 0.0)
+    taxon_llr_variance = (float(np.var(all_taxon_llrs))
+                          if len(all_taxon_llrs) > 1 else 0.0)
     prop_neg_taxon     = (sum(1 for x in all_taxon_llrs if x < 0) /
-                          len(all_taxon_llrs)) if all_taxon_llrs else 0.0
+                          len(all_taxon_llrs)
+                          if all_taxon_llrs else 0.0)
 
-    chimera_flag = posterior_variance > 0.05 or taxon_llr_variance > 2.0
+    # Aggregate chimera flag — existing variance-based logic
+    aggregate_chimera_flag = (
+        posterior_variance > 0.05
+        or taxon_llr_variance > 2.0
+    )
+
+    # ── Single-hit flagging ───────────────────────────────────────────────────
+    # Flag any subsample whose top hit has a taxon LLR below the threshold.
+    # This catches chimeras where only 1-2 subsamples land in the
+    # contaminated region — the aggregate posterior would look fine but
+    # the individual subsample clearly hits the wrong taxon.
+    flagged_samples        = []
+    flagged_sample_details = []
+
+    if flag_on_single_hit:
+        for s in sample_results:
+            top_llr = s.get("top_taxon_llr")
+            if top_llr is not None and top_llr < single_hit_taxon_llr_threshold:
+                flagged_samples.append(s["sample"])
+                flagged_sample_details.append({
+                    "sample":        s["sample"],
+                    "query_start":   s.get("query_start"),
+                    "query_end":     s.get("query_end"),
+                    "top_taxon_llr": round(top_llr, 4),
+                    "top_taxon":     s.get("top_taxon", "unknown"),
+                    "top_gene_llr":  s.get("top_gene_llr"),
+                    "top_accession": s.get("top_accession"),
+                })
+                print(f"  ⚠ Sample {s['sample']} flagged: "
+                      f"taxon_llr={top_llr:.3f} < "
+                      f"{single_hit_taxon_llr_threshold} | "
+                      f"top_taxon={s.get('top_taxon', 'N/A')} | "
+                      f"pos={s.get('query_start','?')}-"
+                      f"{s.get('query_end','?')}")
+
+    single_hit_flag = len(flagged_samples) > 0
+    chimera_flag    = aggregate_chimera_flag or single_hit_flag
+
+    # ── Print summary ─────────────────────────────────────────────────────────
+    flag_str = "⚠ CHIMERA" if chimera_flag else "✓ OK"
+    print(f"  {flag_str} | "
+          f"posterior={final_posterior:.4f} | "
+          f"post_var={posterior_variance:.4f} | "
+          f"taxon_llr_var={taxon_llr_variance:.4f} | "
+          f"prop_neg={prop_neg_taxon:.3f} | "
+          f"flagged_samples={len(flagged_samples)}/{len(sample_results)}")
 
     return {
-        "query_accession":     query_accession,
-        "taxon":               taxon,
-        "gene":                gene,
-        "seq_length":          len(seq),
-        "subsample_length":    n,
-        "n_samples":           n_samples,
-        "sample_results":      sample_results,
-        "sample_posteriors":   sample_posteriors,
-        "posterior_variance":  round(posterior_variance, 6),
-        "taxon_llr_variance":  round(taxon_llr_variance, 4),
-        "prop_neg_taxon_hits": round(prop_neg_taxon, 4),
-        "chimera_flag":        chimera_flag,
-        "cumulative_log_odds": round(cumulative_log_odds, 4),
-        "final_posterior":     round(final_posterior, 4),
-        # Kept for backward compatibility with calibrate_priors()
-        "prior_prob":          prior_prob,
-        "prior_log_odds":      round(prior_log_odds, 4),
-        "total_llr":           round(cumulative_log_odds - prior_log_odds, 4),
-        "posterior_log_odds":  round(cumulative_log_odds, 4),
-        "posterior_prob":      round(final_posterior, 4),
-        "hit_details":         [h for s in sample_results
-                                for h in s["hit_details"]],
+        "query_accession":              query_accession,
+        "taxon":                        taxon,
+        "gene":                         gene,
+        "seq_length":                   len(seq),
+        "subsample_length":             n,
+        "n_samples":                    n_samples,
+        "sample_results":               sample_results,
+        "sample_posteriors":            sample_posteriors,
+        "posterior_variance":           round(posterior_variance, 6),
+        "taxon_llr_variance":           round(taxon_llr_variance, 4),
+        "prop_neg_taxon_hits":          round(prop_neg_taxon, 4),
+        "aggregate_chimera_flag":       aggregate_chimera_flag,
+        "single_hit_flag":              single_hit_flag,
+        "chimera_flag":                 chimera_flag,
+        "n_flagged_samples":            len(flagged_samples),
+        "flagged_sample_indices":       flagged_samples,
+        "flagged_sample_details":       flagged_sample_details,
+        "flag_on_single_hit":           flag_on_single_hit,
+        "single_hit_taxon_llr_threshold": single_hit_taxon_llr_threshold,
+        "cumulative_log_odds":          round(cumulative_log_odds, 4),
+        "final_posterior":              round(final_posterior, 4),
+        "prior_prob":                   prior_prob,
+        "prior_log_odds":               round(prior_log_odds, 4),
+        "total_llr":                    round(
+                                          cumulative_log_odds -
+                                          prior_log_odds, 4),
+        "posterior_log_odds":           round(cumulative_log_odds, 4),
+        "posterior_prob":               round(final_posterior, 4),
+        "hit_details":                  [h for s in sample_results
+                                         for h in s["hit_details"]],
     }
 
+
+def _parse_blast_xml_to_samples(blast_xml: str,
+                                 sample_meta: list,
+                                 accession: str) -> dict:
+    """
+    Parse a BLAST XML output file into the same dict format that
+    verify_seq() returns, so score_blast() can handle both local
+    and remote BLAST with identical downstream code.
+
+    Parameters
+    ----------
+    blast_xml   : str   path to BLAST XML output file
+    sample_meta : list  dicts with sample_index, query_start, query_end
+                        for each subsample — in the same order they were
+                        written to the query FASTA
+    accession   : str   query accession for self-hit removal
+
+    Returns
+    -------
+    dict with "samples" key matching verify_seq() output format
+    """
+    from Bio.Blast import NCBIXML
+
+    samples = []
+
+    with open(blast_xml, "r") as f:
+        blast_records = list(NCBIXML.parse(f))
+
+    for idx, (record, meta) in enumerate(
+        zip(blast_records, sample_meta)
+    ):
+        hits = []
+        for alignment in record.alignments:
+            for hsp in alignment.hsps:
+
+                # Remove self-hits by accession
+                hit_acc = alignment.accession
+                if accession and accession in hit_acc:
+                    continue
+
+                hits.append({
+                    "accession":    hit_acc,
+                    "description":  alignment.title,
+                    "bitscore":     hsp.bits,
+                    "pident":       (hsp.identities /
+                                     hsp.align_length * 100
+                                     if hsp.align_length > 0 else 0.0),
+                    "evalue":       hsp.expect,
+                    "align_length": hsp.align_length,
+                })
+
+        samples.append({
+            "sample_index": meta["sample_index"],
+            "query_start":  meta["query_start"],
+            "query_end":    meta["query_end"],
+            "hits":         hits,
+        })
+
+    return {"samples": samples}
 #print(score_blast("GU981106", "CACTTCCTTTGGATATGYTTGATGTGTTTTTGAATCATAATATCAATTCCTTTCTGAGGCAAGTTGAGAAGGTCAGAGATGAGGCATTGGTTCTTGTTATTCAATCCTATAATGAAGCAAAAATGAAATTTGATGAGCATAAGGTTGAAAAATCTATCACCCAACAACGAAAGACCTTTCAAATTCCAGGGTACACCATTCCTGTTGTTAATGTCGAAGTGTCTCCATTCACAGTAGAGATGTTTCCATTTGGTTATGTGATCCCAAAGGAGGTCAGCACCCCAAAGTTCACCATCCTGGGTTCTGGTTTCTCTGTGCCTTCCTATACTTTAGTCCTGCCCTTTCTAGAACTACCAGCTCTTCATATCCCTAAGTTTCTTGAGCTTTCTTTTCCAGACTTCAAAGTATCGAGTATCCCAAGGAATATTTTCATTCCAGCCCTGGGAAATGTTACATATGATTTTTCCTTTAAGTCAAGTGTCATTACACTGAATGCCAATGCTGGACTTTAT", 50,"Anourosorex_squamipes", "APOB", load_taxonomy("C:/Users/ojmin/OneDrive/Documents/UNI/Python_Packages/src/bioinf_packages/dictionary_funcs/taxonomy_data.csv"), load_glossary("C:/Users/ojmin/OneDrive/Documents/UNI/Python_Packages/src/bioinf_packages/dictionary_funcs/glossary.csv"), 0.95, 97.0, 0.3, 0.1))

@@ -425,6 +425,53 @@ def build_scaffold_tree(scaffold_nexus: str,
         "constraint_tree":   constraint_path,
     }
 
+def plot_scaffold_tree(treefile: str,
+                       id_map_path: str = None,
+                       save_path: str = None):
+    """
+    Plot a scaffold tree, restoring full headers if an id_map is provided.
+
+    Parameters
+    ----------
+    treefile    : str   path to IQ-TREE .treefile (Newick)
+    id_map_path : str   path to _id_map.json — if provided, short IDs
+                        are replaced with full headers for readable labels
+    save_path   : str   path to save figure (default: same dir as treefile)
+    """
+    tree = Phylo.read(treefile, "newick")
+
+    # Restore full headers if id_map provided
+    if id_map_path and Path(id_map_path).exists():
+        with open(id_map_path, "r") as f:
+            id_map = json.load(f)
+        for clade in tree.get_terminals():
+            if clade.name and clade.name in id_map:
+                # Extract just genus_species and accession for readability
+                full_id = id_map[clade.name]
+                parts   = full_id.split("|")
+                taxon   = parts[0]
+                acc     = next((p.split(":",1)[1] for p in parts
+                                if p.startswith("accession:")), "")
+                clade.name = f"{taxon}_{acc}" if acc else taxon
+
+    n_terminals = len(tree.get_terminals())
+    fig, ax     = plt.subplots(figsize=(14, max(8, n_terminals * 0.4)))
+
+    Phylo.draw(tree, axes=ax, do_show=False)
+
+    gene_name = Path(treefile).stem
+    ax.set_title(f"Scaffold tree — {gene_name}", fontsize=12)
+    ax.set_xlabel("Branch length (substitutions per site)")
+    plt.tight_layout()
+
+    if save_path is None:
+        save_path = str(treefile).replace(".treefile", "_tree.png")
+
+    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Figure saved: {save_path}")
+    return save_path
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PROFILE ALIGNMENT  (add query subsamples to scaffold alignment)

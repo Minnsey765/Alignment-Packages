@@ -5,8 +5,8 @@ import re
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 
-from _assess_peer_review import loop_peer_review
-#from ..alignment_funcs._extract_accessions import extract_accessions
+#from _assess_peer_review import loop_peer_review
+from ..alignment_funcs._extract_accessions import extract_accessions
 
 
 def _strip_version(acc):
