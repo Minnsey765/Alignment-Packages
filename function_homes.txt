@@ -1,0 +1,39 @@
+_score_hit.py
+    sigmoid()
+    pident_to_llr()
+    softmax_weights()
+    score_hit()
+    aggregate_hit_scores()
+    score_blast()          ← unchanged, manual params
+    recommended_subsample_length()
+    recommended_n_samples()
+
+_compute_csv.py
+    calibrate_hit_filters()
+    apply_cross_gene_consistency()
+    calibrate_gene_prop_neg_thresholds()
+    calibrate_from_csv()
+    run_calibration_diagnostics()
+
+_subsamples_to_blast.py
+    load_metadata()
+    parse_subsample_header()
+    _submit_blast()
+    _poll_blast()
+    _parse_blast_xml()
+    _load_existing_csv()
+    _append_to_csv()
+    subsamples_to_blast()
+
+_save_subsamples.py
+    prepare_subsample_fastas()
+
+prep_verify_fastas.py
+    prepare_verification_fasta()
+
+batch_blast_verify.py
+    _is_ncbi_peak_hours()
+    _wait_for_off_peak()
+    _score_job_results()
+    blast_subsample_directory()
+    score_from_csv()           ← goes here

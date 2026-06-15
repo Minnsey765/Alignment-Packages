@@ -161,4 +161,4 @@ def generate_artefact_seqs(input_dir: str,
     SeqIO.write(all_modified_records, output_path, "fasta")
     print(f"\nWrote {len(all_modified_records)} sequences to {output_path}")
 
-#generate_artefact_seqs("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_generation/fasta_data", "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_seq", "modifed_seqs.fasta", 0.20, 0.40)
+generate_artefact_seqs("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_generation/fasta_data", "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_seq", "modifed_seqs.fasta", 0.20, 0.40)
