@@ -305,13 +305,13 @@ def prepare_subsample_fastas(
 
 #prepare_subsample_fastas(input_fasta = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/artefact_seq/modifed_seqs.fasta",
 #                         output_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/subsample_fastas/artefact",
-#                         max_seqs_per_file = 2000,
+#                         max_seqs_per_file = 1000,
 #                         max_files = None,
 #                         )
 
-prepare_subsample_fastas(input_fasta = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/all_queries.fasta",
+prepare_subsample_fastas(input_fasta = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/query_verify/all_queries.fasta",
                          output_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/subsample_fastas/query",
-                         max_seqs_per_file = 2000,
+                         max_seqs_per_file = 1000,
                          max_files = None,
                          )
 

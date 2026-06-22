@@ -239,6 +239,10 @@ def apply_cross_gene_consistency(
         metrics: dict,
         min_well_scoring_fraction: float = 0.6,
         well_scoring_threshold_prop_neg: float = 0.4,
+        max_poorly_scoring_for_rescue: int = 3,
+        # Do not rescue if more than this many genes are poorly
+        # scoring — indicates a real chimera rather than noise.
+        # Default 3: rescue fires only when <= 3 genes are flagged.
         known_orphan_taxa: list = None,
         orphan_prop_neg_threshold: float = 0.8,
 ) -> dict:
@@ -334,7 +338,8 @@ def apply_cross_gene_consistency(
                     f"regardless of database coverage."
                 )
 
-            elif frac_well >= min_well_scoring_fraction:
+            elif (frac_well >= min_well_scoring_fraction
+                and len(poorly_scoring) <= max_poorly_scoring_for_rescue):
                 result[parent_key]["chimera_flag"]        = False
                 result[parent_key]["cross_gene_rescue"]   = True
                 result[parent_key]["cross_gene_evidence"] = (
@@ -482,6 +487,8 @@ def calibrate_from_csv(
         taxon_llr_var_threshold_range: tuple = (0.5, 1.0, 2.0,
                                                 3.0, 5.0),
         prop_neg_threshold_range: tuple = (0.3, 0.4, 0.5, 0.6, 0.7),
+        no_hits_threshold_range: tuple = (0.3, 0.5, 0.7, 0.9),
+        max_poorly_scoring_range: tuple = (1, 2, 3, 4, 5),
         flag_on_single_hit: bool = True,
         single_hit_taxon_llr_threshold: float = -2.0,
         min_well_scoring_fraction: float = 0.6,
@@ -489,6 +496,7 @@ def calibrate_from_csv(
         known_orphan_taxa: list = None,
         orphan_prop_neg_threshold: float = 0.8,
         orphan_rescue_mode: str = "genuine_only",
+        label_map: dict = None,
 ) -> dict:
     """
     Calibrate Bayesian model parameters from blast_results.csv.
@@ -507,16 +515,36 @@ def calibrate_from_csv(
                          (recommended, used for the saved JSON)
         "none"         — no rescue during sweep (baseline comparison)
 
-    The mode comparison table always shows both modes at the same
-    best parameters regardless of which mode was used for the sweep.
+    label_map maps raw CSV label values to calibration classes.
+    Default treats "GENUINE" as genuine and "ARTEFACT" as artefact.
+    Use to incorporate additional label types, e.g.:
+        label_map = {
+            "GENUINE":       "GENUINE",
+            "ARTEFACT":      "ARTEFACT",
+            "REAL_ARTEFACT": "ARTEFACT",
+            "CHIMERA":       "ARTEFACT",
+        }
     """
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+
+    # ── Build label map ───────────────────────────────────────────────────────
+    if label_map is None:
+        label_map = {
+            "GENUINE":  "GENUINE",
+            "ARTEFACT": "ARTEFACT",
+        }
+    genuine_labels  = {k for k, v in label_map.items()
+                       if v == "GENUINE"}
+    artefact_labels = {k for k, v in label_map.items()
+                       if v == "ARTEFACT"}
 
     print(f"\n{'='*60}")
     print(f"CALIBRATE FROM CSV")
     print(f"{'='*60}")
     print(f"Loading: {results_csv}")
     print(f"Orphan rescue mode: {orphan_rescue_mode}")
+    print(f"Genuine labels : {sorted(genuine_labels)}")
+    print(f"Artefact labels: {sorted(artefact_labels)}")
 
     # ── Load data ─────────────────────────────────────────────────────────────
     genuine_hits     = defaultdict(list)
@@ -525,13 +553,22 @@ def calibrate_from_csv(
     artefact_parents = set()
     parent_taxon     = {}
 
+    # Track which (acc, gene, sample) keys had no hits so
+    # compute_parent_metrics can correctly compute prop_no_hits.
+    # NO_HITS rows are recorded here as empty hit lists rather than
+    # being skipped entirely.
+    genuine_no_hit_samples  = set()   # (acc, gene, sample) with no hits
+    artefact_no_hit_samples = set()
+
     with open(results_csv, "r", newline="",
               encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            label = row.get("label", "").strip()
-            if label not in ("GENUINE", "ARTEFACT"):
+            raw_label = row.get("label", "").strip()
+            label     = label_map.get(raw_label)
+            if label is None:
                 continue
+
             acc   = row.get("accession", "").strip()
             gene  = row.get("gene", "").strip()
             taxon = row.get("taxon", "").strip()
@@ -547,7 +584,19 @@ def calibrate_from_csv(
             parent_taxon[(acc, gene, label)] = taxon
 
             if row.get("hit_accession") == "NO_HITS":
+                # Record the sample as a no-hit subsample so
+                # prop_no_hits can be computed correctly
+                try:
+                    sample = row["sample"]
+                except KeyError:
+                    continue
+                no_hit_key = (acc, gene, sample)
+                if label == "GENUINE":
+                    genuine_no_hit_samples.add(no_hit_key)
+                else:
+                    artefact_no_hit_samples.add(no_hit_key)
                 continue
+
             try:
                 sample      = row["sample"]
                 bitscore    = float(row["bitscore"])
@@ -580,17 +629,40 @@ def calibrate_from_csv(
         raise ValueError("No ARTEFACT sequences found in CSV.")
 
     # ── Group subsamples by parent ────────────────────────────────────────────
-    def group_by_parent(hit_dict: dict) -> dict:
+    def group_by_parent(hit_dict: dict,
+                        no_hit_samples: set) -> dict:
+        """
+        Group hits by (acc, gene) parent key. Also adds empty hit
+        lists for no-hit subsamples so prop_no_hits is computed
+        correctly — without this, subsamples with no hits are
+        invisible to compute_parent_metrics.
+        """
         grouped = defaultdict(list)
+
+        # Add subsamples that had hits
         for (acc, gene, sample), hits in hit_dict.items():
             grouped[(acc, gene)].append({
                 "sample": sample,
                 "hits":   hits,
             })
+
+        # Add subsamples that had no hits as empty lists
+        seen_keys = {(acc, gene, sd["sample"])
+                     for (acc, gene), samples in grouped.items()
+                     for sd in samples}
+        for (acc, gene, sample) in no_hit_samples:
+            if (acc, gene, sample) not in seen_keys:
+                grouped[(acc, gene)].append({
+                    "sample": sample,
+                    "hits":   [],
+                })
+
         return dict(grouped)
 
-    genuine_by_parent  = group_by_parent(genuine_hits)
-    artefact_by_parent = group_by_parent(artefact_hits)
+    genuine_by_parent  = group_by_parent(genuine_hits,
+                                         genuine_no_hit_samples)
+    artefact_by_parent = group_by_parent(artefact_hits,
+                                         artefact_no_hit_samples)
 
     # ── compute_parent_metrics ────────────────────────────────────────────────
     def compute_parent_metrics(parent_samples_dict: dict,
@@ -608,9 +680,13 @@ def calibrate_from_csv(
             prior_log_odds      = math.log(prior / (1 - prior))
             cumulative_log_odds = prior_log_odds
 
+            n_subsamples_total   = len(samples)
+            n_subsamples_no_hits = 0
+
             for sample_data in samples:
                 hits = sample_data["hits"]
                 if not hits:
+                    n_subsamples_no_hits += 1
                     continue
 
                 bitscores    = [h["bitscore"] for h in hits]
@@ -649,24 +725,34 @@ def calibrate_from_csv(
             prop_neg = (sum(1 for x in all_taxon_llrs if x < 0) /
                         len(all_taxon_llrs)
                         if all_taxon_llrs else 0.0)
+            prop_no_hits = (n_subsamples_no_hits / n_subsamples_total
+                            if n_subsamples_total > 0 else 0.0)
 
             taxon         = parent_taxon.get((acc, gene, label), "")
             taxon_genus   = taxon.split("_")[0] if taxon else ""
             is_orphan     = taxon_genus in set(known_orphan_taxa or [])
             prelim_thresh = 0.3 if is_orphan else 0.5
 
+            # Preliminary chimera flag for cross-gene rescue.
+            # prop_no_hits > 0.5 included so sequences where most
+            # subsamples return no hits are eligible for rescue
+            # assessment rather than being silently cleared.
             results[parent_key] = {
-                "posterior_variance":  post_var,
-                "taxon_llr_variance":  llr_var,
-                "prop_neg_taxon_hits": prop_neg,
-                "mean_posterior":      (float(np.mean(sample_posts))
-                                        if sample_posts else 0.0),
-                "single_hit_flag":     any_single_flag,
-                "cumulative_log_odds": cumulative_log_odds,
-                "label":               label,
-                "taxon":               taxon,
-                "chimera_flag":        any_single_flag or
-                                       prop_neg > prelim_thresh,
+                "posterior_variance":   post_var,
+                "taxon_llr_variance":   llr_var,
+                "prop_neg_taxon_hits":  prop_neg,
+                "prop_no_hits":         prop_no_hits,
+                "n_subsamples_no_hits": n_subsamples_no_hits,
+                "n_subsamples_total":   n_subsamples_total,
+                "mean_posterior":       (float(np.mean(sample_posts))
+                                         if sample_posts else 0.0),
+                "single_hit_flag":      any_single_flag,
+                "cumulative_log_odds":  cumulative_log_odds,
+                "label":                label,
+                "taxon":                taxon,
+                "chimera_flag":         (any_single_flag
+                                         or prop_neg > prelim_thresh
+                                         or prop_no_hits > 0.5),
             }
         return results
 
@@ -709,6 +795,7 @@ def calibrate_from_csv(
         "posterior_variance":  report_separation("posterior_variance"),
         "taxon_llr_variance":  report_separation("taxon_llr_variance"),
         "prop_neg_taxon_hits": report_separation("prop_neg_taxon_hits"),
+        "prop_no_hits":        report_separation("prop_no_hits"),
         "mean_posterior":      report_separation("mean_posterior"),
     }
 
@@ -719,7 +806,9 @@ def calibrate_from_csv(
                     len(beta_range) *
                     len(prop_neg_threshold_range) *
                     len(posterior_var_threshold_range) *
-                    len(taxon_llr_var_threshold_range))
+                    len(taxon_llr_var_threshold_range) *
+                    len(no_hits_threshold_range)*
+                    len(max_poorly_scoring_range))
 
     print(f"\n{'='*60}")
     print(f"SWEEPING {total_combos} PARAMETER COMBINATIONS")
@@ -731,10 +820,6 @@ def calibrate_from_csv(
     best_specificity = 0.0
     sweep_results    = []
 
-    # Orphan rescue is applied to genuine sequences during the sweep
-    # when orphan_rescue_mode="genuine_only". Artefact sequences are
-    # never given orphan rescue — chimeric insertions are genuine
-    # errors regardless of database coverage for the source taxon.
     orphan_for_genuine = (
         known_orphan_taxa
         if orphan_rescue_mode == "genuine_only"
@@ -746,129 +831,149 @@ def calibrate_from_csv(
             for k in k_range:
                 for beta in beta_range:
 
-                    g_metrics = compute_parent_metrics(
+                    g_metrics_base = compute_parent_metrics(
                         genuine_by_parent, "GENUINE",
                         prior, pident_thresh, k, beta
                     )
-                    a_metrics = compute_parent_metrics(
+                    a_metrics_base = compute_parent_metrics(
                         artefact_by_parent, "ARTEFACT",
                         prior, pident_thresh, k, beta
                     )
 
-                    g_metrics = apply_cross_gene_consistency(
-                        g_metrics,
-                        min_well_scoring_fraction       =
-                            min_well_scoring_fraction,
-                        well_scoring_threshold_prop_neg =
-                            well_scoring_threshold_prop_neg,
-                        known_orphan_taxa               =
-                            orphan_for_genuine,
-                        orphan_prop_neg_threshold       =
-                            orphan_prop_neg_threshold,
-                    )
-                    a_metrics = apply_cross_gene_consistency(
-                        a_metrics,
-                        min_well_scoring_fraction       =
-                            min_well_scoring_fraction,
-                        well_scoring_threshold_prop_neg =
-                            well_scoring_threshold_prop_neg,
-                        known_orphan_taxa               = None,
-                        orphan_prop_neg_threshold       =
-                            orphan_prop_neg_threshold,
-                    )
+                    for max_poorly in max_poorly_scoring_range:
 
-                    for prop_neg_thresh in prop_neg_threshold_range:
-                        for post_var_thresh in \
-                                posterior_var_threshold_range:
-                            for llr_var_thresh in \
-                                    taxon_llr_var_threshold_range:
+                        g_metrics = apply_cross_gene_consistency(
+                            g_metrics_base,
+                            min_well_scoring_fraction       =
+                                min_well_scoring_fraction,
+                            well_scoring_threshold_prop_neg =
+                                well_scoring_threshold_prop_neg,
+                            max_poorly_scoring_for_rescue   =
+                                max_poorly,
+                            known_orphan_taxa               =
+                                orphan_for_genuine,
+                            orphan_prop_neg_threshold       =
+                                orphan_prop_neg_threshold,
+                        )
+                        a_metrics = apply_cross_gene_consistency(
+                            a_metrics_base,
+                            min_well_scoring_fraction       =
+                                min_well_scoring_fraction,
+                            well_scoring_threshold_prop_neg =
+                                well_scoring_threshold_prop_neg,
+                            max_poorly_scoring_for_rescue   =
+                                max_poorly,
+                            known_orphan_taxa               = None,
+                            orphan_prop_neg_threshold       =
+                                orphan_prop_neg_threshold,
+                        )
 
-                                tp = tn = fp = fn = 0
+                        for prop_neg_thresh in prop_neg_threshold_range:
+                            for post_var_thresh in \
+                                    posterior_var_threshold_range:
+                                for llr_var_thresh in \
+                                        taxon_llr_var_threshold_range:
+                                    for no_hits_thresh in \
+                                            no_hits_threshold_range:
 
-                                for m in g_metrics.values():
-                                    if m.get("cross_gene_rescue",
-                                             False):
-                                        predicted = False
-                                    else:
-                                        predicted = (
-                                            m["posterior_variance"] >
-                                            post_var_thresh
-                                            or m["taxon_llr_variance"] >
-                                            llr_var_thresh
-                                            or m["prop_neg_taxon_hits"] >
-                                            prop_neg_thresh
-                                            or m["single_hit_flag"]
+                                        tp = tn = fp = fn = 0
+
+                                        for m in g_metrics.values():
+                                            if m.get("cross_gene_rescue",
+                                                    False):
+                                                predicted = False
+                                            else:
+                                                predicted = (
+                                                    m["posterior_variance"]
+                                                    > post_var_thresh
+                                                    or m["taxon_llr_variance"]
+                                                    > llr_var_thresh
+                                                    or m["prop_neg_taxon_hits"]
+                                                    > prop_neg_thresh
+                                                    or m["single_hit_flag"]
+                                                    or m["prop_no_hits"]
+                                                    > no_hits_thresh
+                                                )
+                                            if predicted: fp += 1
+                                            else:         tn += 1
+
+                                        for m in a_metrics.values():
+                                            if m.get("cross_gene_rescue",
+                                                    False):
+                                                predicted = False
+                                            else:
+                                                predicted = (
+                                                    m["posterior_variance"]
+                                                    > post_var_thresh
+                                                    or m["taxon_llr_variance"]
+                                                    > llr_var_thresh
+                                                    or m["prop_neg_taxon_hits"]
+                                                    > prop_neg_thresh
+                                                    or m["single_hit_flag"]
+                                                    or m["prop_no_hits"]
+                                                    > no_hits_thresh
+                                                )
+                                            if predicted: tp += 1
+                                            else:         fn += 1
+
+                                        sensitivity = (tp / (tp + fn)
+                                                    if (tp + fn) > 0
+                                                    else 0.0)
+                                        specificity = (tn / (tn + fp)
+                                                    if (tn + fp) > 0
+                                                    else 0.0)
+                                        precision   = (tp / (tp + fp)
+                                                    if (tp + fp) > 0
+                                                    else 0.0)
+                                        f1          = (
+                                            2 * precision * sensitivity /
+                                            (precision + sensitivity)
+                                            if (precision + sensitivity) > 0
+                                            else 0.0
                                         )
-                                    if predicted: fp += 1
-                                    else:         tn += 1
 
-                                for m in a_metrics.values():
-                                    if m.get("cross_gene_rescue",
-                                             False):
-                                        predicted = False
-                                    else:
-                                        predicted = (
-                                            m["posterior_variance"] >
-                                            post_var_thresh
-                                            or m["taxon_llr_variance"] >
-                                            llr_var_thresh
-                                            or m["prop_neg_taxon_hits"] >
-                                            prop_neg_thresh
-                                            or m["single_hit_flag"]
-                                        )
-                                    if predicted: tp += 1
-                                    else:         fn += 1
+                                        combo = {
+                                            "prior_prob":
+                                                prior,
+                                            "pident_threshold":
+                                                pident_thresh,
+                                            "k":
+                                                k,
+                                            "beta":
+                                                beta,
+                                            "prop_neg_threshold":
+                                                prop_neg_thresh,
+                                            "posterior_var_threshold":
+                                                post_var_thresh,
+                                            "taxon_llr_var_threshold":
+                                                llr_var_thresh,
+                                            "no_hits_threshold":
+                                                no_hits_thresh,
+                                            "max_poorly_scoring_for_rescue":
+                                                max_poorly,
+                                            "tp":          tp,
+                                            "tn":          tn,
+                                            "fp":          fp,
+                                            "fn":          fn,
+                                            "sensitivity":
+                                                round(sensitivity, 4),
+                                            "specificity":
+                                                round(specificity, 4),
+                                            "precision":
+                                                round(precision, 4),
+                                            "f1":
+                                                round(f1, 4),
+                                        }
+                                        sweep_results.append(combo)
 
-                                sensitivity = (tp / (tp + fn)
-                                               if (tp + fn) > 0
-                                               else 0.0)
-                                specificity = (tn / (tn + fp)
-                                               if (tn + fp) > 0
-                                               else 0.0)
-                                precision   = (tp / (tp + fp)
-                                               if (tp + fp) > 0
-                                               else 0.0)
-                                f1          = (
-                                    2 * precision * sensitivity /
-                                    (precision + sensitivity)
-                                    if (precision + sensitivity) > 0
-                                    else 0.0
-                                )
-
-                                combo = {
-                                    "prior_prob":
-                                        prior,
-                                    "pident_threshold":
-                                        pident_thresh,
-                                    "k":
-                                        k,
-                                    "beta":
-                                        beta,
-                                    "prop_neg_threshold":
-                                        prop_neg_thresh,
-                                    "posterior_var_threshold":
-                                        post_var_thresh,
-                                    "taxon_llr_var_threshold":
-                                        llr_var_thresh,
-                                    "tp":          tp,
-                                    "tn":          tn,
-                                    "fp":          fp,
-                                    "fn":          fn,
-                                    "sensitivity": round(sensitivity, 4),
-                                    "specificity": round(specificity, 4),
-                                    "precision":   round(precision, 4),
-                                    "f1":          round(f1, 4),
-                                }
-                                sweep_results.append(combo)
-
-                                if (f1 > best_f1
-                                        or (f1 == best_f1
-                                            and specificity >
-                                            best_specificity)):
-                                    best_f1          = f1
-                                    best_sensitivity = sensitivity
-                                    best_specificity = specificity
-                                    best_params      = dict(combo)
+                                        if (f1 > best_f1
+                                                or (f1 == best_f1
+                                                    and specificity >
+                                                    best_specificity)):
+                                            best_f1          = f1
+                                            best_sensitivity = sensitivity
+                                            best_specificity = specificity
+                                            best_params      = dict(combo)
 
     # ── Gene-specific prop_neg thresholds ─────────────────────────────────────
     print(f"\nCalibrating gene-specific prop_neg thresholds...")
@@ -920,6 +1025,8 @@ def calibrate_from_csv(
             g_metrics_final,
             min_well_scoring_fraction       = min_well_scoring_fraction,
             well_scoring_threshold_prop_neg = well_scoring_threshold_prop_neg,
+            max_poorly_scoring_for_rescue   =
+                best_params["max_poorly_scoring_for_rescue"],
             known_orphan_taxa               = known_orphan_taxa,
             orphan_prop_neg_threshold       = orphan_prop_neg_threshold,
         )
@@ -927,6 +1034,7 @@ def calibrate_from_csv(
         pnt = best_params["prop_neg_threshold"]
         pvt = best_params["posterior_var_threshold"]
         lvt = best_params["taxon_llr_var_threshold"]
+        nht = best_params["no_hits_threshold"]
 
         for (acc, gene), m in g_metrics_final.items():
             if get_genus(m.get("taxon", "")) not in orphan_set:
@@ -936,6 +1044,7 @@ def calibrate_from_csv(
                 or m["taxon_llr_variance"] > lvt
                 or m["prop_neg_taxon_hits"] > pnt
                 or m["single_hit_flag"]
+                or m["prop_no_hits"] > nht
             )
             if flagged_without:
                 orphan_report["orphan_genuine_would_be_flagged"] += 1
@@ -950,7 +1059,8 @@ def calibrate_from_csv(
             if (m["posterior_variance"]  > pvt
                     or m["taxon_llr_variance"] > lvt
                     or m["prop_neg_taxon_hits"] > pnt
-                    or m["single_hit_flag"]):
+                    or m["single_hit_flag"]
+                    or m["prop_no_hits"] > nht):
                 orphan_report["orphan_artefact_detected"] += 1
 
         print(f"\n── Orphan taxa report ───────────────────────────────────────")
@@ -964,12 +1074,6 @@ def calibrate_from_csv(
               f"{orphan_report['orphan_artefact_detected']}")
 
     # ── Mode comparison at fixed best params ──────────────────────────────────
-    # Re-evaluates both rescue modes at the same best parameter values
-    # so the comparison is fair. Artefact sequences always use
-    # known_orphan_taxa=None since artefact orphan rescue is never
-    # applied. The comparison shows the effect of genuine orphan rescue
-    # on specificity without changing sensitivity.
-
     mode_comparison = {}
     print(f"\n── Orphan rescue mode comparison at best params ─────────────")
     print(f"  {'Mode':<16} {'TP':>4} {'TN':>4} {'FP':>4} {'FN':>4} "
@@ -979,6 +1083,7 @@ def calibrate_from_csv(
     pnt = best_params["prop_neg_threshold"]
     pvt = best_params["posterior_var_threshold"]
     lvt = best_params["taxon_llr_var_threshold"]
+    nht = best_params["no_hits_threshold"]
 
     for mode in ("genuine_only", "none"):
         of_g = known_orphan_taxa if mode == "genuine_only" else None
@@ -1001,6 +1106,8 @@ def calibrate_from_csv(
             gm,
             min_well_scoring_fraction       = min_well_scoring_fraction,
             well_scoring_threshold_prop_neg = well_scoring_threshold_prop_neg,
+            max_poorly_scoring_for_rescue   =
+                best_params["max_poorly_scoring_for_rescue"],
             known_orphan_taxa               = of_g,
             orphan_prop_neg_threshold       = orphan_prop_neg_threshold,
         )
@@ -1008,10 +1115,11 @@ def calibrate_from_csv(
             am,
             min_well_scoring_fraction       = min_well_scoring_fraction,
             well_scoring_threshold_prop_neg = well_scoring_threshold_prop_neg,
+            max_poorly_scoring_for_rescue   =
+                best_params["max_poorly_scoring_for_rescue"],
             known_orphan_taxa               = None,
             orphan_prop_neg_threshold       = orphan_prop_neg_threshold,
         )
-
         tp = tn = fp = fn = 0
 
         for m in gm.values():
@@ -1020,6 +1128,7 @@ def calibrate_from_csv(
                 or m["taxon_llr_variance"] > lvt
                 or m["prop_neg_taxon_hits"] > pnt
                 or m["single_hit_flag"]
+                or m["prop_no_hits"] > nht
             ))
             if pred: fp += 1
             else:    tn += 1
@@ -1030,6 +1139,7 @@ def calibrate_from_csv(
                 or m["taxon_llr_variance"] > lvt
                 or m["prop_neg_taxon_hits"] > pnt
                 or m["single_hit_flag"]
+                or m["prop_no_hits"] > nht
             ))
             if pred: tp += 1
             else:    fn += 1
@@ -1052,22 +1162,24 @@ def calibrate_from_csv(
 
     # ── Save JSON ─────────────────────────────────────────────────────────────
     calibration_out = {
-        "best_params":                   best_params,
-        "best_f1":                       round(best_f1, 4),
-        "best_sensitivity":              round(best_sensitivity, 4),
-        "best_specificity":              round(best_specificity, 4),
-        "n_genuine":                     len(genuine_parents),
-        "n_artefact":                    len(artefact_parents),
-        "discrimination_report":         discrimination_report,
-        "flag_on_single_hit":            flag_on_single_hit,
-        "single_hit_taxon_llr_threshold":
-            single_hit_taxon_llr_threshold,
-        "gene_prop_neg_thresholds":      gene_prop_neg_thresholds,
-        "known_orphan_taxa":             list(known_orphan_taxa or []),
-        "orphan_prop_neg_threshold":     orphan_prop_neg_threshold,
-        "orphan_taxa_report":            orphan_report,
-        "orphan_rescue_mode":            orphan_rescue_mode,
-        "mode_comparison":               mode_comparison,
+        "best_params":                    best_params,
+        "best_f1":                        round(best_f1, 4),
+        "best_sensitivity":               round(best_sensitivity, 4),
+        "best_specificity":               round(best_specificity, 4),
+        "n_genuine":                      len(genuine_parents),
+        "n_artefact":                     len(artefact_parents),
+        "discrimination_report":          discrimination_report,
+        "flag_on_single_hit":             flag_on_single_hit,
+        "single_hit_taxon_llr_threshold": single_hit_taxon_llr_threshold,
+        "gene_prop_neg_thresholds":       gene_prop_neg_thresholds,
+        "known_orphan_taxa":              list(known_orphan_taxa or []),
+        "orphan_prop_neg_threshold":      orphan_prop_neg_threshold,
+        "orphan_taxa_report":             orphan_report,
+        "orphan_rescue_mode":             orphan_rescue_mode,
+        "mode_comparison":                mode_comparison,
+        "label_map":                      label_map,
+        "genuine_labels":                 sorted(genuine_labels),
+        "artefact_labels":                sorted(artefact_labels),
     }
 
     with open(output_path, "w") as f:
@@ -1119,6 +1231,7 @@ def calibrate_from_csv(
         "compute_parent_metrics":   compute_parent_metrics,
         "mode_comparison":          mode_comparison,
     }
+
 
 
 def run_calibration_diagnostics(
@@ -1266,11 +1379,7 @@ def run_calibration_diagnostics(
         "g_metrics_rescued": g_rescued,
     }
 
-
-cal = calibrate_from_csv(
-    results_csv         = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/callibration/blast_results.csv",
-    output_path         = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/callibration/model_calibration.json"
-    # Narrow ranges around best values
+"""
     prior_prob_range              = (0.5, 0.7, 0.9, 0.95),
     pident_threshold_range        = (90.0, 92.0, 95.0),
     k_range                       = (0.05, 0.1, 0.2),
@@ -1278,15 +1387,41 @@ cal = calibrate_from_csv(
     prop_neg_threshold_range      = (0.4, 0.5, 0.6),
     posterior_var_threshold_range = (0.03, 0.05, 0.07, 0.10),
     taxon_llr_var_threshold_range = (1.5, 2.0, 2.5, 3.0, 5.0),
+
+"""
+"""
+cal = calibrate_from_csv(
+    results_csv         = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/callibration/blast_results.csv",
+    output_path         = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/callibration/model_calibration.json",
+    # Narrow ranges around best values
+    prior_prob_range              = (0.5,),
+    pident_threshold_range        = (95.0,),
+    k_range                       = (0.05,),
+    beta_range                    = (0.005,),
+    prop_neg_threshold_range      = (0.4, 0.5, 0.6),
+    posterior_var_threshold_range = (0.02, 0.03, 0.05),
+    taxon_llr_var_threshold_range = (3.0, 5.0),
+    no_hits_threshold_range       = (0.3, 0.5, 0.9),
+    max_poorly_scoring_range      = (1, 2, 3, 4, 5),
+
     known_orphan_taxa             = ["Uropsilus", "Urotrichus",
                                     "Solenodon", "Condylura", 
                                     "Desmana", "Galemys", "Dymecodon", 
                                     "Nectogale", "Scapanulus", 
                                     "Parascaptor", "Podogymnura", 
                                     "Neohylomys", "Congosorex", 
-                                    "Diplomesodon", "Scaptochirus"],
+                                    "Diplomesodon", "Scaptochirus", 
+                                    "Chimarrogale", "Episoriculus", 
+                                    "Neotetracus", "Soriculus", 
+                                    "Scaptonyx", "Euroscaptor", 
+                                    "Blarinella", "Anourosorex", 
+                                    "Sylvisorex", "Myosorex"],
     orphan_prop_neg_threshold     = 0.8,
+    orphan_rescue_mode= "genuine_only"
 )
+"""
+
+
 
 """
 Potential other orphan taxa:
@@ -1328,6 +1463,7 @@ Chimarrogale, Episoriculus, Neotetracus, Soriculus, Scaptonyx, Euroscaptor, Blar
 #    orphan_prop_neg_threshold     = 0.8,
 #    orphan_rescue_mode="None",
 #)
+"""
 
 #run calibration on standard cal
 diag = run_calibration_diagnostics(
@@ -1341,3 +1477,5 @@ diag = run_calibration_diagnostics(
 
 print(f"\nFP by trigger: {diag['fp_by_trigger']}")
 print(f"FP by gene   : {diag['fp_by_gene']}")
+
+"""

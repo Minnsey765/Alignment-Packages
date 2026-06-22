@@ -256,4 +256,20 @@ def loop_clustal(fasta_dir: str,
             time.sleep(interval)
 
 # Usage
+#loop_clustal(
+#    fasta_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/verify_family/fasta_data",
+#    output_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/verify_family/nexus_data",
+#)
 #loop_clustal("C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_fastas", "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/verify_data/msa_verify/msaVerify_nexus/Framework_alignment/genes")
+
+
+#relaxed
+loop_clustal(
+    fasta_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/fasta_data_clean/relaxed",
+    output_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/aligned_fastas/relaxed",
+)
+#harsh
+loop_clustal(
+    fasta_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/fasta_data_clean/harsh",
+    output_dir = "C:/Users/ojmin/OneDrive/Documents/UNI/MPhil/Project/aligment/code/aligned_fastas/harsh",
+)
